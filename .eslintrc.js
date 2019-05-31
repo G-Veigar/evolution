@@ -13,5 +13,10 @@ module.exports = {
   },
   parserOptions: {
     parser: 'babel-eslint'
-  }
+  },
+  globals: {
+    wx: true,
+    console: true,
+    Modernizr: true
+  },
 }

@@ -32,10 +32,6 @@ module.exports = {
                       { removeTitle: true },
                       { convertPathData: false }
                     ]
-                  }),
-                  // doc: https://github.com/imagemin/imagemin-webp
-                  require('imagemin-webp')({
-                    quality: 80
                   })
                 ]
               }
@@ -45,13 +41,4 @@ module.exports = {
       ]
     }
   }
-  // chainWebpack: config => {
-  // config.module
-  //   .rule('images')
-  //   .test(/\.(jpe?g|png|gif|svg)$/)
-  //   .use('img-loader')
-  //   .loader('img-loader', {
-  //   })
-  //   .end()
-  // }
 }

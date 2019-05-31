@@ -6,20 +6,36 @@ const fs = require('fs')
 
 const imgDir = '../src/assets'
 // {png,jpg,jpeg}中间不能有空格
-const imgInputPath = path.resolve(__dirname, imgDir + '/*.{png,jpg,jpeg}')
+const jpgInputPath = path.resolve(__dirname, imgDir + '/*.{jpg,jpeg}')
+const pngInputPath = path.resolve(__dirname, imgDir + '/*.png')
 const imgOutputPath = path.resolve(__dirname, imgDir)
 
 // 转换为webp图片
 function generateWebpImg (path) {
-  let imgPath = path || imgInputPath
-  imagemin([imgPath], imgOutputPath, {
+  let jpgPath, pngPath
+  if (path) {
+    if (path.endsWith('.png')) {
+      pngPath = path
+    } else if (path.endsWith('.jpg') || path.endsWith('.jpeg')) {
+      jpgPath = path
+    }
+  } else {
+    pngPath = pngInputPath
+    jpgPath = jpgInputPath
+  }
+  jpgPath && imagemin([jpgPath], imgOutputPath, {
     use: [
-      imageminWebp({ quality: 100 })
+      // doc: https://github.com/imagemin/imagemin-webp
+      imageminWebp({ quality: 75 })
     ]
-  }).then((data) => {
-    console.log('generated webp img success')
-  }).catch(e => {
-    console.error(e)
+  })
+  pngPath && imagemin([pngPath], imgOutputPath, {
+    use: [
+      // doc: https://github.com/imagemin/imagemin-webp
+      imageminWebp({
+        lossless: false
+      })
+    ]
   })
 }
 

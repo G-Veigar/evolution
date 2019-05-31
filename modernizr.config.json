@@ -1,0 +1,9 @@
+{
+    "feature-detects": [
+        "img/webp",
+        "css/vwunit",
+        "css/vhunit",
+        "css/vmaxunit",
+        "css/vminunit"
+    ]
+}
