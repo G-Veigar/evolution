@@ -4,6 +4,8 @@ import Home from './views/Home.vue'
 
 Vue.use(Router)
 
+console.log(Router.install)
+
 export default new Router({
   routes: [
     {

@@ -1,14 +1,3 @@
-// module.exports = {
-//   plugins: {
-//     autoprefixer: {},
-//     // doc: https://preset-env.cssdb.org/
-//     'postcss-preset-env': {
-//       stage: 2 // 建议实际使用stage 2以上的特性 doc: https://cssdb.org/#stage-0
-//     }
-//     // webpcss: {}
-//   }
-// }
-
 module.exports = ({ file, options, env }) => {
   // 判断是否是第三方库的css
   let isNodeModulesCss = file.dirname.includes('/node_modules/')
