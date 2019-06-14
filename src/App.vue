@@ -1,51 +1,26 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-      <button @click="goAbout">parmas</button>
-      <button @click="goAbout2">query</button>
+      <router-link to="/">Home</router-link><br>
+      <router-link to="/about">About</router-link><br>
+      <router-link to="/scrollPass">scrollPass</router-link><br>
     </div>
     <router-view/>
   </div>
 </template>
 
-<script>
-export default {
-  methods: {
-    goAbout () {
-      this.$router.push({
-        name: 'about',
-        params: {
-          date: '2019'
-        }
-      })
-    },
-    goAbout2 () {
-      this.$router.push({
-        name: 'about',
-        params: {
-          date: '2019'
-        },
-        query: {
-          date2: '2019'
-        }
-      })
-    }
-  }
-}
-</script>
-
-<style>
+<style scoped>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
 }
+
 #nav {
   padding: 30px;
+  font-size: 32px;
+  line-height: 1.2;
 }
 
 #nav a {
@@ -54,6 +29,6 @@ export default {
 }
 
 #nav a.router-link-exact-active {
-  color: #42b983;
+  color: #fc9153;
 }
 </style>

@@ -4,10 +4,11 @@ import router from './router'
 import store from './store'
 // 特征检测库modernizr
 import './utils/modernizr'
-import fastClick from 'fastclick'
 import viewportUnitsBuggyfill from 'viewport-units-buggyfill'
 import hacks from 'viewport-units-buggyfill/viewport-units-buggyfill.hacks'
+import plugins from './plugins'
 import 'normalize.css'
+import './styles/base.css'
 
 // 根据特性检测 判断是否需要hacks视口单位
 let noNeedHacks = Modernizr.cssvwunit && Modernizr.cssvhunit && Modernizr.cssvmaxunit && Modernizr.cssvminunit
@@ -21,10 +22,12 @@ if (noNeedHacks) {
   })
 }
 
-// fastClick 消除移动端click事件300ms延迟
-fastClick.attach(document.body)
-
 Vue.config.productionTip = false
+
+// 注册全局vue插件
+plugins.forEach(plugin => {
+  Vue.use(plugin)
+})
 
 let rootVue = new Vue({
   router,

@@ -6,6 +6,8 @@
     - [在html中使用webp](#在html中使用webp)
         - [使用<picture>](#使用picture)
         - [特性检测库 [Modernizr](https://modernizr.com/)](#特性检测库-modernizrhttpsmodernizrcom)
+    - [在css中使用webp](#在css中使用webp)
+        - [利用css优先级](#利用css优先级)
 
 <!-- /TOC -->
 
@@ -23,3 +25,20 @@
 缺点：多写额外代码
 
 #### 特性检测库 [Modernizr](https://modernizr.com/)
+
+### 在css中使用webp
+
+#### 利用css优先级
+
+首先需要判断当前环境是否支持webp格式，可以手写一个判断函数，或者使用Modernizr
+如果支持，可以在html元素上加上一个类webp。然后设置css可以像下面这样
+```css
+.hehe {
+  background: url('../assets/cc.png');
+  background-size: 100% 100%;
+}
+.webp .hehe {
+  background: url('../assets/cc.webp');
+  background-size: 100% 100%;
+}
+```
