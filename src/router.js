@@ -35,7 +35,16 @@ const router = new Router({
       meta: {
         title: 'scrollPass'
       }
+    },
+    {
+      path: '/ui',
+      name: 'ui',
+      component: () => import(/* webpackChunkName: "scrollPass" */ './views/ui.vue'),
+      meta: {
+        title: 'ui'
+      }
     }
+
   ]
 })
 

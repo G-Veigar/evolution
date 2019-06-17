@@ -4,6 +4,7 @@
       <router-link to="/">Home</router-link><br>
       <router-link to="/about">About</router-link><br>
       <router-link to="/scrollPass">scrollPass</router-link><br>
+      <router-link to="/ui">ui</router-link><br>
     </div>
     <router-view/>
   </div>
