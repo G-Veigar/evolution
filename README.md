@@ -2,6 +2,8 @@
 一个不断改进的vue项目
 
 ### Project setup
+
+如果终端没用翻墙，建议使用cnpm，因为依赖中的chromium需要访问google下载
 ```
 npm install
 ```

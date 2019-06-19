@@ -8,6 +8,7 @@ Vue.use(Router)
 console.log(Router.install)
 
 const router = new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -39,12 +40,43 @@ const router = new Router({
     {
       path: '/ui',
       name: 'ui',
-      component: () => import(/* webpackChunkName: "scrollPass" */ './views/ui.vue'),
+      component: () => import('./views/ui.vue'),
       meta: {
         title: 'ui'
       }
+    },
+    {
+      path: '/css',
+      name: 'css',
+      component: () => import('./views/css.vue'),
+      meta: {
+        title: 'css'
+      }
+    },
+    {
+      path: '/fast',
+      name: 'fast',
+      component: () => import('./views/fast.vue'),
+      meta: {
+        title: 'fast'
+      }
+    },
+    {
+      path: '/list',
+      name: 'list',
+      component: () => import('./views/list.vue'),
+      meta: {
+        title: 'list'
+      }
+    },
+    {
+      path: '/lazy',
+      name: 'lazy',
+      component: () => import('./views/lazy.vue'),
+      meta: {
+        title: 'lazy'
+      }
     }
-
   ]
 })
 

@@ -1,3 +1,6 @@
+const path = require('path')
+const PrerenderSPAPlugin = require('prerender-spa-plugin')
+
 // doc: https://webpack.docschina.org/configuration/externals/#src/components/Sidebar/Sidebar.jsx
 const externals = {
   dev: {
@@ -34,6 +37,16 @@ const cdn = {
 }
 
 module.exports = {
+  css: {
+    loaderOptions: {
+      css: {
+        minimize: false
+      }
+      // postcss: {
+      //   // 这里的选项会传递给 postcss-loader
+      // }
+    }
+  },
   chainWebpack: config => {
     config
       .plugin('html')
@@ -49,6 +62,7 @@ module.exports = {
       .end()
   },
   configureWebpack: config => {
+    // 配置新loader
     config.module.rules.push({
       test: /\.(jpe?g|png|gif|svg|webp)$/,
       use: [
@@ -86,8 +100,15 @@ module.exports = {
       ]
     })
 
+    // 生产环境配置
     if (process.env.NODE_ENV === 'production') {
       config.externals = externals.build
+      let prerender = new PrerenderSPAPlugin({
+        staticDir: path.join(__dirname, 'dist'),
+        routes: ['/ui']
+      })
+      // 为生产环境 配置新plugin
+      config.plugins.push(prerender)
     } else if (process.env.NODE_ENV === 'development') {
       config.externals = externals.dev
     }

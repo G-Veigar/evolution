@@ -22,3 +22,6 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+
+# vue 审查的webpack配置文件
+webpack.*.js

@@ -27,6 +27,7 @@ module.exports = ({ file, options, env }) => {
       'postcss-preset-env': {
         stage: 2
       },
+      // 'cssnano': {},
       // doc: https://github.com/evrone/postcss-px-to-viewport/blob/master/README_CN.md
       'postcss-px-to-viewport': {
         viewportWidth: 750, // (Number) 设计稿的视口宽度

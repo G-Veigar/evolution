@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 主题色 -->
+    <meta name="theme-color" content="#ff6633">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <!-- 使用CDN加速的CSS文件，配置在vue.config.js下 -->
@@ -15,7 +17,22 @@
     <noscript>
       <strong>We're sorry but evolution doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
-    <div id="app"></div>
+    <div id="app">
+      <style>
+        html, body {
+          margin: 0;
+          padding: 0;
+        }
+        .first-page {
+          width: 100vw;
+          height: 100vh;
+          background: url('<%= BASE_URL %>loading.png') center center no-repeat;
+          background-size: 90px 90px;
+        }
+      </style>
+      <div class="first-page">
+      </div>
+    </div>
     <!-- 使用CDN加速的JS文件，配置在vue.config.js下 -->
     <% for (var i in htmlWebpackPlugin.options.cdn&&htmlWebpackPlugin.options.cdn.js) { %>
     <script src="<%= htmlWebpackPlugin.options.cdn.js[i] %>"></script>

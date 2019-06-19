@@ -8,7 +8,7 @@ import viewportUnitsBuggyfill from 'viewport-units-buggyfill'
 import hacks from 'viewport-units-buggyfill/viewport-units-buggyfill.hacks'
 import plugins from './plugins'
 import 'normalize.css'
-import './styles/base.css'
+import(/* webpackChunkName: "base" */'./styles/base.css')
 
 // 根据特性检测 判断是否需要hacks视口单位
 let noNeedHacks = Modernizr.cssvwunit && Modernizr.cssvhunit && Modernizr.cssvmaxunit && Modernizr.cssvminunit
@@ -41,6 +41,9 @@ if (process.env.NODE_ENV === 'development') {
     var VConsole = module.default
     // eslint-disable-next-line
     new VConsole()
+    // setTimeout(() => {
+    //   rootVue.$mount('#app')
+    // }, 5000)
     rootVue.$mount('#app')
   })
 } else {
