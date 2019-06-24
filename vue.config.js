@@ -1,5 +1,6 @@
 const path = require('path')
 const PrerenderSPAPlugin = require('prerender-spa-plugin')
+// const CspHtmlWebpackPlugin = require('csp-html-webpack-plugin')
 
 // doc: https://webpack.docschina.org/configuration/externals/#src/components/Sidebar/Sidebar.jsx
 const externals = {
@@ -37,16 +38,6 @@ const cdn = {
 }
 
 module.exports = {
-  css: {
-    loaderOptions: {
-      css: {
-        minimize: false
-      }
-      // postcss: {
-      //   // 这里的选项会传递给 postcss-loader
-      // }
-    }
-  },
   chainWebpack: config => {
     config
       .plugin('html')
@@ -100,15 +91,32 @@ module.exports = {
       ]
     })
 
+    // config.plugins.push(new CspHtmlWebpackPlugin({
+    //   'base-uri': "'self'",
+    //   'object-src': "'none'",
+    //   'script-src': ["'unsafe-inline'", "'self'", "'unsafe-eval'", 'cdnjs.cloudflare.com'],
+    //   'style-src': ["'unsafe-inline'", "'self'", "'unsafe-eval'", 'cdnjs.cloudflare.com']
+    // }, {
+    //   enabled: true,
+    //   hashingMethod: 'sha256',
+    //   hashEnabled: {
+    //     'script-src': true,
+    //     'style-src': true
+    //   },
+    //   nonceEnabled: {
+    //     'script-src': true,
+    //     'style-src': true
+    //   }
+    // }))
+
     // 生产环境配置
     if (process.env.NODE_ENV === 'production') {
       config.externals = externals.build
-      let prerender = new PrerenderSPAPlugin({
+      // 为生产环境 配置新plugin
+      config.plugins.push(new PrerenderSPAPlugin({
         staticDir: path.join(__dirname, 'dist'),
         routes: ['/ui']
-      })
-      // 为生产环境 配置新plugin
-      config.plugins.push(prerender)
+      }))
     } else if (process.env.NODE_ENV === 'development') {
       config.externals = externals.dev
     }

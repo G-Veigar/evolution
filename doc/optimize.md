@@ -10,7 +10,7 @@
 - [组件懒加载](#组件懒加载)
     - [利用webpack的Code Splitting（原理同路由懒加载）](#利用webpack的code-splitting原理同路由懒加载)
 - [组件预加载](#组件预加载)
-- [css压缩](#css压缩)
+- [文件压缩](#文件压缩)
 
 <!-- /TOC -->
 ## 服务端渲染与预渲染
@@ -54,6 +54,9 @@ export default {
 
 :todo
 
-## css压缩
+## 文件压缩
 
-webpack的mode模式为production时，会默认开启很多插件，比如压缩js插件TerserPlugin，OptimizeCssnanoPlugin压缩css（基于cssnano）
+webpack的mode模式为production时，会默认开启很多插件，比如压缩js插件TerserPlugin，
+@vue/cli-service内置了optimize-cssnano-plugin压缩css（基于cssnano）
+webpack5 将会内置css压缩，webpack4需要手动加入css压缩插件 optimize-css-assets-webpack-plugin（内置的压缩器也是cssnano）
+

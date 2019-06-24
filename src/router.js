@@ -76,6 +76,30 @@ const router = new Router({
       meta: {
         title: 'lazy'
       }
+    },
+    {
+      path: '/security',
+      name: 'security',
+      component: () => import('./views/security.vue'),
+      meta: {
+        title: 'security'
+      }
+    },
+    {
+      path: '/grid',
+      name: 'grid',
+      component: () => import('./views/grid.vue'),
+      meta: {
+        title: 'grid'
+      }
+    },
+    {
+      path: '/sign',
+      name: 'sign',
+      component: () => import('./views/sign.vue'),
+      meta: {
+        title: 'sign'
+      }
     }
   ]
 })

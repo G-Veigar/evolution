@@ -9,6 +9,9 @@
       <router-link to="/fast">性能</router-link><br>
       <router-link to="/list">list</router-link><br>
       <router-link to="/lazy">lazy</router-link><br>
+      <router-link to="/security">security</router-link><br>
+      <router-link to="/grid">grid</router-link><br>
+      <router-link to="/sign">sign</router-link><br>
     </div>
   </div>
 </template>

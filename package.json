@@ -15,12 +15,18 @@
     "test:unit": "vue-cli-service test:unit",
     "webpack": "vue inspect > webpack.dev.js --mode development && vue inspect > webpack.prod.js --mode production"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint"
+    }
+  },
   "dependencies": {
     "axios": "^0.19.0",
     "core-js": "^2.6.5",
     "js-cookie": "^2.2.0",
     "mand-mobile": "^2.3.0",
     "normalize.css": "^8.0.1",
+    "signature_pad": "^3.0.0-beta.3",
     "vconsole": "^3.3.0",
     "viewport-units-buggyfill": "^0.6.2",
     "vue": "^2.6.10",
@@ -41,8 +47,10 @@
     "babel-jest": "^23.6.0",
     "babel-plugin-import": "^1.8.0",
     "chokidar": "^3.0.0",
+    "csp-html-webpack-plugin": "^3.0.2",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
+    "husky": "^2.5.0",
     "imagemin": "^6.1.0",
     "imagemin-gifsicle": "^6.0.1",
     "imagemin-mozjpeg": "^8.0.0",
