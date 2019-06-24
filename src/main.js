@@ -22,7 +22,7 @@ if (noNeedHacks) {
   })
 }
 
-let a
+let ab
 
 Vue.config.productionTip = false
 
