@@ -22,6 +22,8 @@ if (noNeedHacks) {
   })
 }
 
+let a
+
 Vue.config.productionTip = false
 
 // 注册全局vue插件
