@@ -13,9 +13,6 @@ export default {
       date: this.$route.params.date || '无',
       date2: this.$route.query.date2 || '无'
     }
-  },
-  created () {
-    console.log(this)
   }
 }
 </script>

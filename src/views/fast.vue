@@ -1,7 +1,6 @@
 <template>
   <div class="fast">
-    <button @click="hehe.name = '222'">change name</button>
-    {{hehe && hehe.name}}
+    {{timer}}
   </div>
 </template>
 
@@ -9,15 +8,14 @@
 export default {
   data () {
     return {
-      hehe: null
+      timer: 0
     }
   },
   mounted () {
-    setTimeout(() => {
-      this.hehe = Object.freeze({
-        name: 'hehehhe'
-      })
-    }, 5000)
+    let timerId = requestAnimationFrame(() => {
+      this.timer++
+    })
+    cancelAnimationFrame(timerId)
   }
 }
 </script>

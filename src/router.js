@@ -5,8 +5,6 @@ import { setPageTitle } from './utils/browser'
 
 Vue.use(Router)
 
-console.log(Router.install)
-
 const router = new Router({
   mode: 'history',
   routes: [
@@ -99,6 +97,22 @@ const router = new Router({
       component: () => import('./views/sign.vue'),
       meta: {
         title: 'sign'
+      }
+    },
+    {
+      path: '/promise',
+      name: 'promise',
+      component: () => import('./views/promise.vue'),
+      meta: {
+        title: 'promise'
+      }
+    },
+    {
+      path: '/class',
+      name: 'class',
+      component: () => import('./views/class.vue'),
+      meta: {
+        title: 'class'
       }
     }
   ]

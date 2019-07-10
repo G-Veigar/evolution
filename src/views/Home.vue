@@ -12,6 +12,8 @@
       <router-link to="/security">security</router-link><br>
       <router-link to="/grid">grid</router-link><br>
       <router-link to="/sign">sign</router-link><br>
+      <router-link to="/promise">promise</router-link><br>
+      <router-link to="/class">class</router-link><br>
     </div>
   </div>
 </template>
