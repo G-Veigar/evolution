@@ -6,6 +6,7 @@
       <router-link to="/scrollPass">scrollPass</router-link><br>
       <router-link to="/ui">ui</router-link><br>
       <router-link to="/css">css</router-link><br>
+      <router-link to="/js">js</router-link><br>
       <router-link to="/fast">性能</router-link><br>
       <router-link to="/list">list</router-link><br>
       <router-link to="/lazy">lazy</router-link><br>

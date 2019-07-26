@@ -21,7 +21,7 @@
     <img src="../assets/a.jpg" alt="">
 </picture>
 ```
-优点：不支持picture元素的本身的，和支持webp的浏览器会使用jpg格式
+优点：向后兼容，不支持picture元素的本身的，和不支持webp的浏览器会使用jpg格式
 缺点：多写额外代码
 
 #### 特性检测库 [Modernizr](https://modernizr.com/)

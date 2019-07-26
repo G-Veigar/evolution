@@ -1,1 +1,3 @@
 src/utils/modernizr.js
+webpack.dev.js
+webpack.prod.js

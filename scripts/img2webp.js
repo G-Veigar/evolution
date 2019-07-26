@@ -3,7 +3,7 @@ const imageminWebp = require('imagemin-webp')
 const path = require('path')
 const chokidar = require('chokidar')
 const fs = require('fs')
-
+// 监控的文件夹
 const imgDir = '../src/assets'
 // {png,jpg,jpeg}中间不能有空格
 const jpgInputPath = path.resolve(__dirname, imgDir + '/*.{jpg,jpeg}')

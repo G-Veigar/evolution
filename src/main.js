@@ -15,7 +15,7 @@ let noNeedHacks = Modernizr.cssvwunit && Modernizr.cssvhunit && Modernizr.cssvma
 if (noNeedHacks) {
   viewportUnitsBuggyfill.init()
 } else {
-  // 修复老旧浏览器 Viewport Units的怪异问题 https://github.com/rodneyrehm/viewport-units-buggyfill
+  // 修复老旧浏览器（Mobile Safari） Viewport Units的怪异问题 https://github.com/rodneyrehm/viewport-units-buggyfill
   // hacks参数模拟不支持的老旧浏览器的 Viewport Units
   viewportUnitsBuggyfill.init({
     hacks
@@ -38,12 +38,9 @@ let rootVue = new Vue({
 // 开发和测试环境中，开启vconsole调试工具
 if (process.env.NODE_ENV === 'development') {
   import('vconsole/dist/vconsole.min.js').then(async module => {
-    var VConsole = module.default
-    // eslint-disable-next-line
-    new VConsole()
-    // setTimeout(() => {
-    //   rootVue.$mount('#app')
-    // }, 5000)
+    // var VConsole = module.default
+    // eslint-disable-next-line no-new
+    // new VConsole()
     rootVue.$mount('#app')
   })
 } else {

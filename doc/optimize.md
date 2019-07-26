@@ -11,6 +11,7 @@
     - [利用webpack的Code Splitting（原理同路由懒加载）](#利用webpack的code-splitting原理同路由懒加载)
 - [组件预加载](#组件预加载)
 - [文件压缩](#文件压缩)
+- [SPA路由滚动行为](#spa路由滚动行为)
 
 <!-- /TOC -->
 ## 服务端渲染与预渲染
@@ -23,6 +24,8 @@
 
 * 由于此插件依赖puppeteer， 而puppeteer又依赖谷歌的chromium，所以终端必须有翻墙能力才行，另外一种解决方案是使用cnpm
 
+* 此插件可能会导致闪屏（比如初始页面路由/a，但会闪烁一下/路由的页面，然后变成/a的页面），具体原因猜测可能是跟异步路由有关，但不确定。
+
 ## 首屏渲染优化
 
 ### 增加loading图
@@ -31,7 +34,7 @@
 
 ## 开启vue-cli 构建时的 modern模式，为现代浏览器交付未转义的es6代码，同时为老旧浏览器交付转义后的es5代码
 
-* 为现代浏览器交付的es6版本代码会更小，从而提升性能
+* 为现代浏览器交付的es6版本代码更简洁，文件更小。
 * 并且浏览器原生的api的执行性能也优于转义的es5代码。
 
 ## 组件懒加载
@@ -60,3 +63,7 @@ webpack的mode模式为production时，会默认开启很多插件，比如压�
 @vue/cli-service内置了optimize-cssnano-plugin压缩css（基于cssnano）
 webpack5 将会内置css压缩，webpack4需要手动加入css压缩插件 optimize-css-assets-webpack-plugin（内置的压缩器也是cssnano）
 
+## SPA路由滚动行为
+
+在SPA应用中，路由滚动应该到考虑到路由跳转后滚动条没重置的问题，例如两个长页面（可以滚动）/a，/b 如果在/a页面发生了滚动，然后跳转到/b页面，滚动条位置默认是没有重置的，这样会很奇怪。
+[vue-router的解决方案](https://router.vuejs.org/zh/guide/advanced/scroll-behavior.html)

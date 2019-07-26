@@ -6,13 +6,13 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --modern",
     "lint": "vue-cli-service lint",
-    "analyse": "hiper -c hiper.config.js",
     "dev": "vue-cli-service serve",
-    "img2webp": "node ./scripts/img2webp.js",
-    "modernizr": "modernizr -c modernizr.config.json -d src/utils",
     "report": "vue-cli-service build --report",
     "test:e2e": "vue-cli-service test:e2e",
     "test:unit": "vue-cli-service test:unit",
+    "analyse": "hiper -c hiper.config.js",
+    "img2webp": "node ./scripts/img2webp.js",
+    "modernizr": "modernizr -c modernizr.config.json -d src/utils",
     "webpack": "vue inspect > webpack.dev.js --mode development && vue inspect > webpack.prod.js --mode production"
   },
   "gitHooks": {

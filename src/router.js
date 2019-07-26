@@ -7,6 +7,14 @@ Vue.use(Router)
 
 const router = new Router({
   mode: 'history',
+  scrollBehavior (to, from, savedPosition) {
+    // 如果savedPosition，后退/前进可以返回到浏览器保存的问题位置
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { x: 0, y: 0 }
+    }
+  },
   routes: [
     {
       path: '/',
@@ -46,9 +54,73 @@ const router = new Router({
     {
       path: '/css',
       name: 'css',
-      component: () => import('./views/css.vue'),
+      component: () => import('./views/css/index.vue'),
       meta: {
         title: 'css'
+      }
+    },
+    {
+      path: '/css/figure',
+      name: 'cssFigure',
+      component: () => import('./views/css/figure.vue'),
+      meta: {
+        title: 'css画图形'
+      }
+    },
+    {
+      path: '/css/center',
+      name: 'cssCenter',
+      component: () => import('./views/css/center.vue'),
+      meta: {
+        title: 'css居中'
+      }
+    },
+    {
+      path: '/js',
+      name: 'js',
+      component: () => import('./views/js/index.vue'),
+      meta: {
+        title: 'js'
+      }
+    },
+    {
+      path: '/js/clone',
+      name: 'jsClone',
+      component: () => import('./views/js/clone.vue'),
+      meta: {
+        title: 'js深拷贝'
+      }
+    },
+    {
+      path: '/js/proto',
+      name: 'jsProto',
+      component: () => import('./views/js/proto.vue'),
+      meta: {
+        title: '原型与面向对象'
+      }
+    },
+    {
+      path: '/js/algorithm',
+      name: 'jsAlgorithm',
+      component: () => import('./views/js/algorithm.vue'),
+      meta: {
+        title: '算法'
+      }
+    },
+    {
+      path: '/js/class',
+      name: 'jsClass',
+      component: () => import(/* webpackChunkName: "es6class" */ './views/js/class.vue'),
+      meta: {
+        title: 'class'
+      }
+    },
+    {
+      path: '/js/throttle',
+      name: 'jsThrottle',
+      component: () => import(/* webpackChunkName: "es6class" */ './views/js/throttle.vue'),
+      meta: {
+        title: 'throttle'
       }
     },
     {

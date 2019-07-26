@@ -51,6 +51,11 @@ spa应用页面路由设置title，设置document.title即可，但是在ios有�
 注：这种方式会禁止所有的缩放，iOS需大于9.3
 
 * css
+
+CSS属性 touch-action 用于设置触摸屏用户如何操纵元素的区域(例如，浏览器内置的缩放功能)。
+
+manipulation属性，浏览器只允许进行滚动和持续缩放操作。不允许双金缩放。
+
 ```css
 html {
   touch-action: manipulation;
@@ -86,4 +91,3 @@ if (typeof window.ontouchstart === 'undefined') {
   return true;
 }
 ```
-
