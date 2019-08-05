@@ -33,6 +33,12 @@
       <input class="item-input" type="text" v-model="sameWord.next">
       <div>结果：{{hasSameWord}}</div>
     </div>
+    <div class="item">
+      <div class="title">7. 二分查找</div>
+      <input class="item-input" type="text" v-model="findBy2.arr">
+      <input class="item-input" type="text" v-model="findBy2.val">
+      <div>结果：{{hasSameWord}}</div>
+    </div>
   </div>
 </template>
 
@@ -131,8 +137,11 @@ export default {
       sameWord: {
         pre: 'hello world',
         next: 'world'
+      },
+      findBy2: {
+        arr: '1, 3, 5, 6, 11, 22, 36, 77, 97',
+        val: 36
       }
-
     }
   },
   methods: {

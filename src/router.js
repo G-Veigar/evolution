@@ -124,6 +124,22 @@ const router = new Router({
       }
     },
     {
+      path: '/js/countDown',
+      name: 'countDown',
+      component: () => import(/* webpackChunkName: "es6class" */ './views/js/count-down.vue'),
+      meta: {
+        title: 'countDown'
+      }
+    },
+    {
+      path: '/js/async',
+      name: 'jsAsync',
+      component: () => import(/* webpackChunkName: "es6class" */ './views/js/async.vue'),
+      meta: {
+        title: 'jsAsync'
+      }
+    },
+    {
       path: '/fast',
       name: 'fast',
       component: () => import('./views/fast.vue'),
@@ -185,6 +201,22 @@ const router = new Router({
       component: () => import('./views/class.vue'),
       meta: {
         title: 'class'
+      }
+    },
+    {
+      path: '/effect',
+      name: 'effect',
+      component: () => import('./views/effect/index.vue'),
+      meta: {
+        title: 'effect'
+      }
+    },
+    {
+      path: '/effect/toTop',
+      name: 'effectToTop',
+      component: () => import('./views/effect/scroll-to-top.vue'),
+      meta: {
+        title: 'effectToTop'
       }
     }
   ]
