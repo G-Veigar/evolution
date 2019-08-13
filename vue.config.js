@@ -1,5 +1,6 @@
 const path = require('path')
 const PrerenderSPAPlugin = require('prerender-spa-plugin')
+const webpack = require('webpack')
 // const CspHtmlWebpackPlugin = require('csp-html-webpack-plugin')
 
 // doc: https://webpack.docschina.org/configuration/externals/#src/components/Sidebar/Sidebar.jsx
@@ -111,12 +112,18 @@ module.exports = {
 
     // 生产环境配置
     if (process.env.NODE_ENV === 'production') {
+      config.entry = './src/test/index.js'
       config.externals = externals.build
       // 为生产环境 配置新plugin
-      config.plugins.push(new PrerenderSPAPlugin({
-        staticDir: path.join(__dirname, 'dist'),
-        routes: ['/ui']
-      }))
+      config.plugins.push(
+        // 预渲染插件
+        new PrerenderSPAPlugin({
+          staticDir: path.join(__dirname, 'dist'),
+          routes: ['/ui']
+        }),
+        // 开启作用域提升(scope hoisting) https://webpack.docschina.org/plugins/module-concatenation-plugin/#src/components/Sidebar/Sidebar.jsx
+        new webpack.optimize.ModuleConcatenationPlugin()
+      )
     } else if (process.env.NODE_ENV === 'development') {
       config.externals = externals.dev
     }

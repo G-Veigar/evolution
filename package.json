@@ -1,5 +1,5 @@
 {
-  "name": "evolution",
+  "name": "evolution2",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -13,7 +13,8 @@
     "analyse": "hiper -c hiper.config.js",
     "img2webp": "node ./scripts/img2webp.js",
     "modernizr": "modernizr -c modernizr.config.json -d src/utils",
-    "webpack": "vue inspect > webpack.dev.js --mode development && vue inspect > webpack.prod.js --mode production"
+    "webpack:dev": "vue inspect > webpack.dev.js --mode development",
+    "webpack": "vue inspect > webpack.prod.js --plugins"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
@@ -29,11 +30,10 @@
   "dependencies": {
     "axios": "^0.19.0",
     "core-js": "^2.6.5",
-    "js-cookie": "^2.2.0",
-    "mand-mobile": "^2.3.0",
+    "mand-mobile": "^2.4.2",
     "normalize.css": "^8.0.1",
     "signature_pad": "^3.0.0-beta.3",
-    "vconsole": "^3.3.0",
+    "vconsole": "^3.3.2",
     "viewport-units-buggyfill": "^0.6.2",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
@@ -41,34 +41,31 @@
     "vuex": "^3.0.1"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.8.0",
-    "@vue/cli-plugin-e2e-cypress": "^3.8.0",
-    "@vue/cli-plugin-eslint": "^3.8.0",
-    "@vue/cli-plugin-unit-jest": "^3.8.0",
-    "@vue/cli-service": "^3.8.0",
+    "@vue/cli-plugin-babel": "^3.10.0",
+    "@vue/cli-plugin-eslint": "^3.10.0",
+    "@vue/cli-plugin-unit-jest": "^3.10.0",
+    "@vue/cli-service": "^3.10.0",
     "@vue/eslint-config-standard": "^4.0.0",
     "@vue/test-utils": "1.0.0-beta.29",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
-    "babel-plugin-import": "^1.8.0",
-    "chokidar": "^3.0.0",
-    "csp-html-webpack-plugin": "^3.0.2",
+    "babel-plugin-import": "^1.12.0",
+    "chokidar": "^3.0.2",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
-    "imagemin": "^6.1.0",
+    "imagemin": "^7.0.0",
     "imagemin-gifsicle": "^6.0.1",
     "imagemin-mozjpeg": "^8.0.0",
-    "imagemin-pngquant": "^7.0.0",
+    "imagemin-pngquant": "^8.0.0",
     "imagemin-svgo": "^7.0.0",
     "imagemin-webp": "^5.1.0",
     "img-loader": "^3.0.1",
-    "lint-staged": "^8.2.1",
-    "node-sass": "^4.12.0",
-    "postcss-preset-env": "^6.6.0",
-    "postcss-px-to-viewport": "^1.1.0",
-    "postcss-pxtorem": "^4.0.1",
+    "lint-staged": "^9.2.1",
+    "postcss-preset-env": "^6.7.0",
+    "postcss-px-to-viewport": "^1.1.1",
     "prerender-spa-plugin": "^3.4.0",
+    "sass": "^1.18.0",
     "sass-loader": "^7.1.0",
     "vue-template-compiler": "^2.6.10"
   }

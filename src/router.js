@@ -140,6 +140,14 @@ const router = new Router({
       }
     },
     {
+      path: '/js/ajax',
+      name: 'ajax',
+      component: () => import(/* webpackChunkName: "es6class" */ './views/js/ajax.vue'),
+      meta: {
+        title: 'ajax'
+      }
+    },
+    {
       path: '/fast',
       name: 'fast',
       component: () => import('./views/fast.vue'),
