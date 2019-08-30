@@ -10,11 +10,13 @@
       <router-link to="/fast">性能</router-link><br>
       <router-link to="/list">list</router-link><br>
       <router-link to="/lazy">lazy</router-link><br>
+      <router-link to="/pagePreload">路由预加载</router-link><br>
       <router-link to="/security">security</router-link><br>
       <router-link to="/grid">grid</router-link><br>
       <router-link to="/sign">sign</router-link><br>
       <router-link to="/promise">promise</router-link><br>
       <router-link to="/class">class</router-link><br>
+      <router-link to="/image">image</router-link><br>
       <router-link to="/effect">效果</router-link><br>
     </div>
   </div>

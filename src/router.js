@@ -172,6 +172,22 @@ const router = new Router({
       }
     },
     {
+      path: '/pagePreload',
+      name: 'pagePreload',
+      component: () => import('./views/page-preload.vue'),
+      meta: {
+        title: 'pagePreload'
+      }
+    },
+    {
+      path: '/pagePreloadPage',
+      name: 'pagePreloadPage',
+      component: () => import('./views/page-preload-page.vue'),
+      meta: {
+        title: 'pagePreloadPage'
+      }
+    },
+    {
       path: '/security',
       name: 'security',
       component: () => import('./views/security.vue'),
@@ -225,6 +241,22 @@ const router = new Router({
       component: () => import('./views/effect/scroll-to-top.vue'),
       meta: {
         title: 'effectToTop'
+      }
+    },
+    {
+      path: '/effect/fixedTop',
+      name: 'fixedTop',
+      component: () => import('./views/effect/fixed-top.vue'),
+      meta: {
+        title: 'fixedTop'
+      }
+    },
+    {
+      path: '/image',
+      name: 'image',
+      component: () => import('./views/image.vue'),
+      meta: {
+        title: 'image'
       }
     }
   ]

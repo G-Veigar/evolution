@@ -40,8 +40,40 @@ const cdn = {
 
 module.exports = {
   chainWebpack: config => {
-    config
-      .plugin('html')
+    // loader 配置
+    config.module
+      .rule('images')
+      .test(/\.(png|jpe?g|gif|webp)(\?.*)?$/)
+      // 图片压缩
+      .use('image-webpack-loader')
+      .loader('image-webpack-loader')
+      .tap(options => {
+        return {
+          mozjpeg: {
+            progressive: true,
+            quality: 80
+          },
+          // optipng.enabled: false will disable optipng
+          optipng: {
+            enabled: true
+          },
+          pngquant: {
+            quality: '75-90',
+            speed: 4
+          },
+          gifsicle: {
+            interlaced: false
+          },
+          webp: {
+            quality: 80
+          }
+        }
+      })
+
+    // plugin 配置
+    config.plugins.delete('prefetch')
+
+    config.plugin('html')
       .tap(args => {
         if (process.env.NODE_ENV === 'production') {
           args[0].cdn = cdn.build
@@ -55,42 +87,42 @@ module.exports = {
   },
   configureWebpack: config => {
     // 配置新loader
-    config.module.rules.push({
-      test: /\.(jpe?g|png|gif|svg|webp)$/,
-      use: [
-        {
-          loader: 'img-loader',
-          options: {
-            plugins: [
-              // doc: https://github.com/imagemin/imagemin-gifsicle
-              require('imagemin-gifsicle')({
-                interlaced: true, // Interlace gif for progressive rendering
-                optimizationLevel: 3 // Select an optimization level between 1 and 3.
-                // colors: 8 // 颜色位数 2-256
-              }),
-              // doc: https://github.com/imagemin/imagemin-mozjpeg
-              require('imagemin-mozjpeg')({
-                quality: 85, // Compression quality, in range 0 (worst) to 100 (perfect).
-                progressive: true, // false creates baseline JPEG file.
-                arithmetic: false
-              }),
-              // doc: https://github.com/imagemin/imagemin-pngquant
-              require('imagemin-pngquant')({
-                quality: [0.3, 0.8] // Instructs pngquant to use the least amount of colors required to meet or exceed the max quality. If conversion results in quality below the min quality the image won't be saved.
-              }),
-              // doc: https://github.com/imagemin/imagemin-svgo
-              // doc: https://github.com/svg/svgo
-              require('imagemin-svgo')({
-                plugins: [
-                  { removeTitle: true },
-                  { convertPathData: false }
-                ]
-              })
-            ]
-          }
-        }
-      ]
-    })
+    // config.module.rules.push({
+    //   test: /\.(jpe?g|png|gif|svg|webp)$/,
+    //   use: [
+    //     {
+    //       loader: 'img-loader',
+    //       options: {
+    //         plugins: [
+    //           // doc: https://github.com/imagemin/imagemin-gifsicle
+    //           require('imagemin-gifsicle')({
+    //             interlaced: true, // Interlace gif for progressive rendering
+    //             optimizationLevel: 3 // Select an optimization level between 1 and 3.
+    //             // colors: 8 // 颜色位数 2-256
+    //           }),
+    //           // doc: https://github.com/imagemin/imagemin-mozjpeg
+    //           require('imagemin-mozjpeg')({
+    //             quality: 85, // Compression quality, in range 0 (worst) to 100 (perfect).
+    //             progressive: true, // false creates baseline JPEG file.
+    //             arithmetic: false
+    //           }),
+    //           // doc: https://github.com/imagemin/imagemin-pngquant
+    //           require('imagemin-pngquant')({
+    //             quality: [0.3, 0.8] // Instructs pngquant to use the least amount of colors required to meet or exceed the max quality. If conversion results in quality below the min quality the image won't be saved.
+    //           }),
+    //           // doc: https://github.com/imagemin/imagemin-svgo
+    //           // doc: https://github.com/svg/svgo
+    //           require('imagemin-svgo')({
+    //             plugins: [
+    //               { removeTitle: true },
+    //               { convertPathData: false }
+    //             ]
+    //           })
+    //         ]
+    //       }
+    //     }
+    //   ]
+    // })
 
     // config.plugins.push(new CspHtmlWebpackPlugin({
     //   'base-uri': "'self'",
@@ -112,7 +144,6 @@ module.exports = {
 
     // 生产环境配置
     if (process.env.NODE_ENV === 'production') {
-      config.entry = './src/test/index.js'
       config.externals = externals.build
       // 为生产环境 配置新plugin
       config.plugins.push(

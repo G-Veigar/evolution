@@ -13,8 +13,8 @@
     "analyse": "hiper -c hiper.config.js",
     "img2webp": "node ./scripts/img2webp.js",
     "modernizr": "modernizr -c modernizr.config.json -d src/utils",
-    "webpack:dev": "vue inspect > webpack.dev.js --mode development",
-    "webpack": "vue inspect > webpack.prod.js --plugins"
+    "webpack": "vue inspect > webpack.dev.js --mode development && vue inspect > webpack.prod.js --mode production",
+    "webpack:plugin": "vue inspect > webpack.dev.plugin.js --plugins --mode development && vue inspect > webpack.prod.plugin.js --plugins --mode production"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
@@ -54,6 +54,7 @@
     "chokidar": "^3.0.2",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
+    "image-webpack-loader": "^5.0.0",
     "imagemin": "^7.0.0",
     "imagemin-gifsicle": "^6.0.1",
     "imagemin-mozjpeg": "^8.0.0",
