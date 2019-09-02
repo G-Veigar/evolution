@@ -11,6 +11,7 @@
     - [利用webpack的Code Splitting（原理同路由懒加载）](#利用webpack的code-splitting原理同路由懒加载)
 - [组件预加载](#组件预加载)
 - [文件压缩](#文件压缩)
+    - [图片压缩](#图片压缩)
 - [SPA路由滚动行为](#spa路由滚动行为)
 
 <!-- /TOC -->
@@ -62,6 +63,9 @@ export default {
 webpack的mode模式为production时，会默认开启很多插件，比如压缩js插件TerserPlugin，
 @vue/cli-service内置了optimize-cssnano-plugin压缩css（基于cssnano）
 webpack5 将会内置css压缩，webpack4需要手动加入css压缩插件 optimize-css-assets-webpack-plugin（内置的压缩器也是cssnano）
+
+### 图片压缩
+使用immage-webpack-loader压缩图片
 
 ## SPA路由滚动行为
 

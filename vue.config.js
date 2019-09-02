@@ -148,10 +148,10 @@ module.exports = {
       // 为生产环境 配置新plugin
       config.plugins.push(
         // 预渲染插件
-        new PrerenderSPAPlugin({
-          staticDir: path.join(__dirname, 'dist'),
-          routes: ['/ui']
-        }),
+        // new PrerenderSPAPlugin({
+        //   staticDir: path.join(__dirname, 'dist'),
+        //   routes: ['/ui']
+        // }),
         // 开启作用域提升(scope hoisting) https://webpack.docschina.org/plugins/module-concatenation-plugin/#src/components/Sidebar/Sidebar.jsx
         new webpack.optimize.ModuleConcatenationPlugin()
       )
