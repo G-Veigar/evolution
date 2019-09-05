@@ -1,14 +1,14 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router/index'
-import store from './store'
+import store from './store/index'
 // 特征检测库modernizr
 import './utils/modernizr'
 import viewportUnitsBuggyfill from 'viewport-units-buggyfill'
 import hacks from 'viewport-units-buggyfill/viewport-units-buggyfill.hacks'
 import plugins from './plugins'
 import 'normalize.css'
-import(/* webpackChunkName: "base" */'./styles/base.css')
+import('./styles/base.css')
 
 // 根据特性检测 判断是否需要hacks视口单位
 let noNeedHacks = Modernizr.cssvwunit && Modernizr.cssvhunit && Modernizr.cssvmaxunit && Modernizr.cssvminunit

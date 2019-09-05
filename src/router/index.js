@@ -7,6 +7,7 @@ Vue.use(Router)
 
 const router = new Router({
   mode: 'history',
+  routes,
   scrollBehavior (to, from, savedPosition) {
     // 如果savedPosition，后退/前进可以返回到浏览器保存的问题位置
     if (savedPosition) {
@@ -14,8 +15,7 @@ const router = new Router({
     } else {
       return { x: 0, y: 0 }
     }
-  },
-  routes
+  }
 })
 
 router.beforeEach = beforeEach

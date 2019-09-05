@@ -1,7 +1,9 @@
 import preventScrollThroughPlugin from './prevent-scroll-through'
+import uiPlugin from './ui'
 
 const PluginList = [
-  preventScrollThroughPlugin
+  preventScrollThroughPlugin,
+  uiPlugin
 ]
 
 export default PluginList

@@ -1,9 +1,5 @@
+@import './var.css';
+
 html {
-    touch-action: manipulation;
-}
-.hehe {
-    margin-top: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-bottom: 10px;
+    touch-action: manipulation; /* 防止移动端300ms延迟 */
 }

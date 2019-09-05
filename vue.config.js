@@ -1,5 +1,5 @@
-const path = require('path')
-const PrerenderSPAPlugin = require('prerender-spa-plugin')
+// const path = require('path')
+// const PrerenderSPAPlugin = require('prerender-spa-plugin')
 const webpack = require('webpack')
 // const CspHtmlWebpackPlugin = require('csp-html-webpack-plugin')
 
@@ -41,8 +41,7 @@ const cdn = {
 module.exports = {
   chainWebpack: config => {
     // loader 配置
-    config.module
-      .rule('images')
+    config.module.rule('images')
       .test(/\.(png|jpe?g|gif|webp)(\?.*)?$/)
       // 图片压缩
       .use('image-webpack-loader')
@@ -68,6 +67,18 @@ module.exports = {
             quality: 80
           }
         }
+      })
+
+    config.module.rule('vue')
+      .use('vue-loader').tap(options => {
+        options.transformAssetUrls = {
+          video: ['src', 'poster'],
+          source: 'src',
+          img: 'src',
+          image: ['xlink:href', 'href'],
+          use: ['xlink:href', 'href']
+        }
+        return options
       })
 
     // plugin 配置
@@ -153,7 +164,6 @@ module.exports = {
         //   routes: ['/ui']
         // }),
         // 开启作用域提升(scope hoisting) https://webpack.docschina.org/plugins/module-concatenation-plugin/#src/components/Sidebar/Sidebar.jsx
-        new webpack.optimize.ModuleConcatenationPlugin()
       )
     } else if (process.env.NODE_ENV === 'development') {
       config.externals = externals.dev

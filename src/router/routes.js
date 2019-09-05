@@ -2,13 +2,36 @@ let routes = [
   {
     path: '/',
     name: 'index',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/pages/index.vue'),
-    meta: {
-      title: 'index'
-    }
+    component: () => import(/* webpackChunkName: "about" */ '../views/layouts/main/index'),
+    children: [
+      {
+        path: '',
+        name: 'apply',
+        component: () => import('../views/pages/apply/index'),
+        meta: {
+          title: '借款',
+          noNeedLogin: true
+        }
+      },
+      {
+        path: 'repay',
+        name: 'repay',
+        component: () => import('../views/pages/repay/index'),
+        meta: {
+          title: '我要还款',
+          noNeedLogin: true
+        }
+      },
+      {
+        path: 'mine',
+        name: 'mine',
+        component: () => import('../views/pages/mine/index'),
+        meta: {
+          title: '我的',
+          noNeedLogin: true
+        }
+      }
+    ]
   }
 ]
 
