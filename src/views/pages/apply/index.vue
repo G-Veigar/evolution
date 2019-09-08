@@ -5,7 +5,7 @@
 <script>
 export default {
   mounted () {
-    this.$Toast('123')
+    // this.$Toast('123')
   }
 }
 </script>

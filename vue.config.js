@@ -1,6 +1,6 @@
-// const path = require('path')
+const path = require('path')
 // const PrerenderSPAPlugin = require('prerender-spa-plugin')
-const webpack = require('webpack')
+// const webpack = require('webpack')
 // const CspHtmlWebpackPlugin = require('csp-html-webpack-plugin')
 
 // doc: https://webpack.docschina.org/configuration/externals/#src/components/Sidebar/Sidebar.jsx
@@ -97,6 +97,16 @@ module.exports = {
       .end()
   },
   configureWebpack: config => {
+    let alias = config.resolve.alias
+    config.resolve.alias = {
+      ...alias,
+      '$*': path.resolve(__dirname, 'src/components/'),
+      '$util': path.resolve(__dirname, 'src/utils/'),
+      '$page': path.resolve(__dirname, 'src/views/pages/'),
+      '$style': path.resolve(__dirname, 'src/styles/'),
+      '$router': path.resolve(__dirname, 'src/router/'),
+      '$plugin': path.resolve(__dirname, 'src/plugins/')
+    }
     // 配置新loader
     // config.module.rules.push({
     //   test: /\.(jpe?g|png|gif|svg|webp)$/,
