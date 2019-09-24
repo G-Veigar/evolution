@@ -3,9 +3,11 @@
 </template>
 
 <script>
+// import request from '../../../service/request'
+
 export default {
-  mounted () {
-    // this.$Toast('123')
-  }
+  // mounted () {
+  //   request.get('/user')
+  // }
 }
 </script>

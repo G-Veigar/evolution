@@ -39,6 +39,9 @@ const cdn = {
 }
 
 module.exports = {
+  devServer: {
+    proxy: 'https://www.easy-mock.com/mock/59c8c880e0dc663341b96ee0/example_1506330752231'
+  },
   chainWebpack: config => {
     // loader 配置
     config.module.rule('images')
@@ -167,14 +170,14 @@ module.exports = {
     if (process.env.NODE_ENV === 'production') {
       config.externals = externals.build
       // 为生产环境 配置新plugin
-      config.plugins.push(
-        // 预渲染插件
-        // new PrerenderSPAPlugin({
-        //   staticDir: path.join(__dirname, 'dist'),
-        //   routes: ['/ui']
-        // }),
-        // 开启作用域提升(scope hoisting) https://webpack.docschina.org/plugins/module-concatenation-plugin/#src/components/Sidebar/Sidebar.jsx
-      )
+      // config.plugins.push(
+      // 预渲染插件
+      // new PrerenderSPAPlugin({
+      //   staticDir: path.join(__dirname, 'dist'),
+      //   routes: ['/ui']
+      // }),
+      // 开启作用域提升(scope hoisting) https://webpack.docschina.org/plugins/module-concatenation-plugin/#src/components/Sidebar/Sidebar.jsx
+      // )
     } else if (process.env.NODE_ENV === 'development') {
       config.externals = externals.dev
     }

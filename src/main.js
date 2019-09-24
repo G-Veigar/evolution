@@ -40,9 +40,9 @@ let rootVue = new Vue({
 if (process.env.NODE_ENV === 'development') {
   // 在开发环境中，装载完vconsle后再调用amount，可以避免漏掉一些console信息
   import('vconsole/dist/vconsole.min.js').then(async module => {
-    // var VConsole = module.default
+    var VConsole = module.default
     // eslint-disable-next-line no-new
-    // new VConsole()
+    new VConsole()
     rootVue.$mount('#app')
   })
 } else {
