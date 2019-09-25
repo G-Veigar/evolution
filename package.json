@@ -21,10 +21,13 @@
   },
   "lint-staged": {
     "src/**/*.js": [
-      "eslint --ext .js"
+      "vue-cli-service lint"
     ],
     "scripts/**/*.js": [
-      "eslint --ext .js"
+      "vue-cli-service lint"
+    ],
+    "src/**/*.vue": [
+      "vue-cli-service lint"
     ]
   },
   "dependencies": {
