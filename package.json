@@ -21,13 +21,16 @@
   },
   "lint-staged": {
     "src/**/*.js": [
-      "vue-cli-service lint"
+      "vue-cli-service lint",
+      "git add"
     ],
     "scripts/**/*.js": [
-      "vue-cli-service lint"
+      "vue-cli-service lint",
+      "git add"
     ],
     "src/**/*.vue": [
-      "vue-cli-service lint"
+      "vue-cli-service lint",
+      "git add"
     ]
   },
   "dependencies": {
