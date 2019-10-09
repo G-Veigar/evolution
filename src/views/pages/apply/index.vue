@@ -1,13 +1,21 @@
 <template>
-  <div>apply</div>
+  <div>apply
+    <button @click="hehe">hehe</button>
+  </div>
 </template>
 
 <script>
-// import request from '../../../service/request'
+import event from '../../../utils/event'
+
+event.once('hehe', function () {
+  console.log('hehehe')
+})
 
 export default {
-  // mounted () {
-  //   request.get('/user')
-  // }
+  methods: {
+    hehe () {
+      event.emit('hehe')
+    }
+  }
 }
 </script>
