@@ -25,7 +25,7 @@ module.exports = ({ file, options, env }) => {
     plugins: {
       'autoprefixer': {},
       'postcss-preset-env': {
-        stage: 2
+        stage: 1
       },
       // 'cssnano': {},
       // doc: https://github.com/evrone/postcss-px-to-viewport/blob/master/README_CN.md

@@ -14,7 +14,9 @@
     "img2webp": "node ./scripts/img2webp.js",
     "modernizr": "modernizr -c modernizr.config.json -d src/utils",
     "webpack": "vue inspect > webpack.dev.js --mode development && vue inspect > webpack.prod.js --mode production",
-    "webpack:plugin": "vue inspect > webpack.dev.plugin.js --plugins --mode development && vue inspect > webpack.prod.plugin.js --plugins --mode production"
+    "webpack:plugin": "vue inspect > webpack.dev.plugin.js --plugins --mode development && vue inspect > webpack.prod.plugin.js --plugins --mode production",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
@@ -46,6 +48,11 @@
     "vuex": "^3.0.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@storybook/addon-actions": "^5.2.4",
+    "@storybook/addon-links": "^5.2.4",
+    "@storybook/addons": "^5.2.4",
+    "@storybook/vue": "^5.2.4",
     "@vue/cli-plugin-babel": "^3.10.0",
     "@vue/cli-plugin-eslint": "^3.10.0",
     "@vue/cli-plugin-unit-jest": "^3.10.0",
@@ -55,7 +62,9 @@
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
+    "babel-loader": "^8.0.6",
     "babel-plugin-import": "^1.12.2",
+    "babel-preset-vue": "^2.0.2",
     "chokidar": "^3.2.1",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",

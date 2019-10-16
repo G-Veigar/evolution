@@ -34,7 +34,6 @@ let event
       let cbs = list[eventName]
       if (!cb) {
         list[eventName] = []
-      // cbs = []
       } else {
         cbs.forEach((thisCb, i) => {
           if (thisCb === cb) {
