@@ -1,4 +1,5 @@
 // 修复滚动穿透的指令 传入.prevent修饰符 则启用preventDefault方式
+// TODO: 修复父元素不是body的滚动
 let preventScrollThroughPlugin = {
   install (Vue) {
     Vue.directive('preventScrollThrough', {

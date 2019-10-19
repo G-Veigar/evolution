@@ -1,4 +1,5 @@
 const path = require('path')
+const appConfig = require('./app.config.js')
 // const PrerenderSPAPlugin = require('prerender-spa-plugin')
 // const webpack = require('webpack')
 // const CspHtmlWebpackPlugin = require('csp-html-webpack-plugin')
@@ -94,6 +95,16 @@ module.exports = {
         }
         if (process.env.NODE_ENV === 'development') {
           args[0].cdn = cdn.dev
+        }
+        return args
+      })
+      .end()
+
+    config.plugin('define')
+      .tap(args => {
+        // console.log('define: ', args, appConfig)
+        args[0].appConfig = {
+          ...appConfig
         }
         return args
       })

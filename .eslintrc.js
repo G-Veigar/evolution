@@ -17,6 +17,7 @@ module.exports = {
   globals: {
     wx: true,
     console: true,
-    Modernizr: true
-  },
+    Modernizr: true,
+    appConfig: true
+  }
 }

@@ -1,5 +1,8 @@
 <template>
-  <button class="ev-button" :disabled="disabled">
+  <button
+    class="ev-button"
+    :disabled="disabled"
+    @click="handleClick">
     <slot></slot>
   </button>
 </template>
@@ -11,17 +14,17 @@ export default {
       type: Boolean,
       default: false
     }
+  },
+  methods: {
+    handleClick ($e) {
+      this.$emit('click', $e)
+    }
   }
 }
 </script>
 
 <style lang="postcss" scoped>
 .ev-button {
-  min-width: 100px;
-  height: 60px;
-  line-height: 60px;
-  border: 1px solid #666;
-  background-color: #ffffff;
 
   &[disabled]{
     background-color: #ccc;

@@ -39,7 +39,7 @@ let rootVue = new Vue({
 })
 
 // 开发和测试环境中，开启vconsole调试工具
-if (process.env.NODE_ENV === 'development') {
+if (appConfig.vconsole && process.env.NODE_ENV === 'development') {
   // 在开发环境中，装载完vconsle后再调用amount，可以避免漏掉一些console信息
   import('vconsole/dist/vconsole.min.js').then(async module => {
     var VConsole = module.default
