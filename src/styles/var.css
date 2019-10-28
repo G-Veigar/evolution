@@ -6,11 +6,11 @@
     --tabbar-active-bg-color: #eee;
     --tabbar-color: #C1C1C1;
     --tabbar-active-color: var(--main-color);
-    --header-bg-color: var(--main-color);
     --page-bg-color: #F7F9FC;
     --placeholder-color: #d3d3d3;
     /* header */
     --header-height: 92px;
+    --header-bg-color: var(--main-color);
     --header-font-size: 36px;
     --search-header-height: 180px;
     --current-position-height: 80px;
