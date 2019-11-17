@@ -4,7 +4,7 @@ let routes = [
   {
     path: '/',
     name: 'index',
-    component: () => import(/* webpackChunkName: "about" */ '@/views/layouts/main/index'),
+    component: () => import(/* webpackChunkName: "layout-main" */ '@/views/layouts/main/index'),
     children: [
       {
         path: '',
@@ -12,7 +12,7 @@ let routes = [
         component: () => import('@/views/pages/apply/index'),
         meta: {
           title: '借款',
-          noNeedLogin: true
+          noAuth: true
         }
       },
       {
@@ -21,7 +21,7 @@ let routes = [
         component: () => import('@/views/pages/repay/index'),
         meta: {
           title: '我要还款',
-          noNeedLogin: true
+          noAuth: true
         }
       },
       {
@@ -29,8 +29,7 @@ let routes = [
         name: 'mine',
         component: () => import('@/views/pages/mine/index'),
         meta: {
-          title: '我的',
-          noNeedLogin: true
+          title: '我的'
         }
       }
     ]
@@ -46,7 +45,7 @@ let routes = [
     component: () => import('@/views/pages/error/404'),
     meta: {
       title: '我的',
-      noNeedLogin: true
+      noAuth: true
     }
   }
 ]

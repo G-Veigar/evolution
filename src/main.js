@@ -7,7 +7,9 @@ import './utils/modernizr'
 import viewportUnitsBuggyfill from 'viewport-units-buggyfill'
 import hacks from 'viewport-units-buggyfill/viewport-units-buggyfill.hacks'
 import plugins from './plugins'
-// import 'normalize.css'
+import '@/service/cover'
+
+// normalize.css的替代方案，更小，更面向现代浏览器（非IE），默认box-sizing: border-box
 import 'modern-normalize'
 
 import('./styles/base.css')

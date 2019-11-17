@@ -20,6 +20,7 @@ uaObj.isIos = isIos
 uaObj.isAndroid = isAndroid
 uaObj.isMobile = isIos || isAndroid || /SymbianOS|Windows Phone/i.test(ua)
 
+// 支持连点语法：uaService.isIos.isMobile.isWeixin())
 let uaService = new Proxy(uaObj, {
   get (target, key, proxy) {
     currentValue = target[key]

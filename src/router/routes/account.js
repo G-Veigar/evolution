@@ -5,7 +5,16 @@ let route = [
     component: () => import('@/views/pages/account/login'),
     meta: {
       title: '登录',
-      noNeedLogin: true
+      noAuth: true
+    }
+  },
+  {
+    path: '/register',
+    name: 'register',
+    component: () => import('@/views/pages/account/register'),
+    meta: {
+      title: '注册',
+      noAuth: true
     }
   }
 ]
