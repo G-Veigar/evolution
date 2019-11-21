@@ -102,13 +102,17 @@ module.exports = {
 
     config.plugin('define')
       .tap(args => {
-        // console.log('define: ', args, appConfig)
         args[0].appConfig = {
           ...appConfig
         }
         return args
       })
       .end()
+
+    if (!appConfig.optimizeJs) {
+      config.optimization.minimize(false)
+      config.optimization.minimizers.delete('terser')
+    }
   },
   configureWebpack: config => {
     let alias = config.resolve.alias

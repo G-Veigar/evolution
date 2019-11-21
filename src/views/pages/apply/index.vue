@@ -1,6 +1,6 @@
 <template>
   <div id="page-apply" v-show="hahaShow">apply
-    <ev-button @click="handleClick">haha</ev-button>
+    <ev-button>haha</ev-button>
     <ev-button :disabled="true">haha</ev-button>
   </div>
 </template>
@@ -26,9 +26,6 @@ export default {
       setTimeout(() => {
         this.hahaShow = true
       }, 1000)
-    },
-    handleClick () {
-      console.log('click')
     }
   }
 }

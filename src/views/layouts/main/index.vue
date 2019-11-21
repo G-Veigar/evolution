@@ -17,7 +17,7 @@ import mineIcon from './img/mine@3x.png'
 import mineIcon2 from './img/mine2@3x.png'
 import tabBar from '@/components/common/tabbar/index'
 import { mapState, mapMutations } from 'vuex'
-import event from '$util/event'
+// import event from '$util/event'
 
 export default {
   name: 'index-layout',
@@ -65,9 +65,9 @@ export default {
     }
   },
   created () {
-    event.on('beforeEachRoute', data => {
-      console.log(data)
-    })
+    // event.on('beforeEachRoute', data => {
+    //   console.log(data)
+    // })
   }
 }
 </script>

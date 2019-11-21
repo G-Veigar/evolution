@@ -23,11 +23,22 @@ module.exports = ({ file, options, env }) => {
   // let viewportIgnore = false
   return {
     plugins: {
-      'autoprefixer': {},
+      // 'autoprefixer': {},
+      // postcss-preset-env内置了autoprefixer
       'postcss-preset-env': {
-        stage: 1
+        /* The stage option determines which CSS features to polyfill, based upon their stability in the process of becoming implemented web standards.
+        ** stage阶段：https://cssdb.org/#staging-process */
+        stage: 2,
+        /* The features option enables or disables specific polyfills by ID. Passing true to a specific feature ID will enable its polyfill, while passing false will disable it
+        ** ID list：https://github.com/csstools/postcss-preset-env/blob/master/src/lib/plugins-by-id.js#L36 */
+        features: {
+          'nesting-rules': true
+        }
+        /* The browsers option determines which polyfills are required based upon the browsers you are supporting.
+        ** supports any standard browserslist configuration,which can be a .browserslistrc file, a browserslist key in package.json, or browserslist environment variables.
+        ** The browsers option should only be used when a standard browserslist configuration is not available. */
+        // browsers: 'last 2 versions'
       },
-      // 'cssnano': {},
       // doc: https://github.com/evrone/postcss-px-to-viewport/blob/master/README_CN.md
       'postcss-px-to-viewport': {
         viewportWidth: 750, // (Number) 设计稿的视口宽度
