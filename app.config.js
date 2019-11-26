@@ -16,8 +16,10 @@ const configs = {
   vconsole: dev,
   // js压缩，关闭js压缩可以方便查看打包编译后的代码
   optimizeJs: prod,
-  // 埋点，通常只在prod环境开启
-  track: prod
+  // 埋点，默认：prod
+  track: prod,
+  // vue devtools, 默认：prod
+  devtools: true
 }
 
 let appConfig = {}
