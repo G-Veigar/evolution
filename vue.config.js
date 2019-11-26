@@ -44,6 +44,7 @@ module.exports = {
   devServer: {
     proxy: 'https://www.easy-mock.com/mock/59c8c880e0dc663341b96ee0/example_1506330752231'
   },
+  publicPath: 'evolution/dist/',
   chainWebpack: config => {
     // loader 配置
     config.module.rule('images')
