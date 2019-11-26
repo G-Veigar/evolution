@@ -2,6 +2,11 @@
   <div id="page-apply" v-show="hahaShow">apply
     <ev-button>haha</ev-button>
     <ev-button :disabled="true">haha</ev-button>
+    <br/>
+    <input type="text" v-model="val1">
+    <br/>
+    <input type="text" v-model="val2">
+    <button @click="add">add</button>
   </div>
 </template>
 
@@ -14,6 +19,8 @@ export default {
   },
   data () {
     return {
+      val1: 0,
+      val2: 0,
       hahaShow: true
     }
   },
@@ -26,6 +33,9 @@ export default {
       setTimeout(() => {
         this.hahaShow = true
       }, 1000)
+    },
+    add () {
+      alert(this.val1 + this.val2)
     }
   }
 }

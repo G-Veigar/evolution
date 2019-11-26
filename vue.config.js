@@ -2,6 +2,7 @@ const path = require('path')
 const appConfig = require('./app.config.js')
 const PrerenderSPAPlugin = require('prerender-spa-plugin')
 const webpack = require('webpack')
+
 // const CspHtmlWebpackPlugin = require('csp-html-webpack-plugin')
 
 // doc: https://webpack.docschina.org/configuration/externals/#src/components/Sidebar/Sidebar.jsx
@@ -102,7 +103,7 @@ module.exports = {
 
     config.plugin('define')
       .tap(args => {
-        args[0].appConfig = {
+        args[0]['process.config'] = {
           ...appConfig
         }
         return args

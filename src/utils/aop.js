@@ -6,10 +6,10 @@
  */
 function aop (fun, options) {
   const { before, after } = options
-  return function () {
-    before && before.call(this, arguments)
-    fun.apply(this, arguments)
-    after && after.call(this, arguments)
+  return function (...args) {
+    before && before.call(this, args)
+    fun.apply(this, args)
+    after && after.call(this, args)
   }
 }
 

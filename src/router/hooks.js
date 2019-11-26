@@ -10,6 +10,7 @@ export function beforeEach (to, from, next) {
   }
   // 设置页面title
   setPageTitle(to.meta.title || 'evolution')
+  // 发送beforeEachRoute事件，方便有些业务逻辑在运行时动态的添加钩子
   event.emit('beforeEachRoute', { to, from, next })
   next()
 }
