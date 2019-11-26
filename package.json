@@ -20,9 +20,9 @@
   },
   "dependencies": {
     "axios": "^0.19.0",
-    "core-js": "^3.4.1",
+    "core-js": "^3.4.2",
     "dayjs": "^1.8.17",
-    "mand-mobile": "^2.5.5",
+    "mand-mobile": "^2.5.6",
     "modern-normalize": "^0.5.0",
     "swiper": "^5.2.1",
     "vconsole": "^3.3.2",
@@ -33,7 +33,7 @@
     "vuex": "^3.1.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.7.2",
+    "@babel/core": "^7.7.4",
     "@storybook/addon-actions": "^5.2.6",
     "@storybook/addon-links": "^5.2.6",
     "@storybook/addons": "^5.2.6",
@@ -48,7 +48,7 @@
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.6",
-    "babel-plugin-import": "^1.12.2",
+    "babel-plugin-import": "^1.13.0",
     "babel-preset-vue": "^2.0.2",
     "chokidar": "^3.3.0",
     "eslint": "^5.16.0",
