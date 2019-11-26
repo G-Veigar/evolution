@@ -6,7 +6,7 @@ import { beforeEach } from './hooks'
 Vue.use(Router)
 
 const router = new Router({
-  mode: 'history',
+  mode: 'hash',
   routes,
   scrollBehavior (to, from, savedPosition) {
     // 如果savedPosition，后退/前进可以返回到浏览器保存的问题位置
