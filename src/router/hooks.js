@@ -1,8 +1,11 @@
 import { setPageTitle } from '../utils/browser'
 import event from '$util/event'
 import { userService } from '@/service/user'
+import { once } from 'ramda'
 
 export function beforeEach (to, from, next) {
+  // next只执行一次，防止beforeEachRoute回调重复调用next
+  next = once(next)
   // 检查页面的访问权限
   if (!checkPageAuth(to.meta.noAuth)) {
     next('/login')

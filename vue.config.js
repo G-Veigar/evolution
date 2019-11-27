@@ -42,7 +42,7 @@ const cdn = {
 
 module.exports = {
   devServer: {
-    proxy: 'https://www.easy-mock.com/mock/59c8c880e0dc663341b96ee0/example_1506330752231'
+    proxy: appConfig.proxy
   },
   publicPath: 'evolution/dist/',
   chainWebpack: config => {

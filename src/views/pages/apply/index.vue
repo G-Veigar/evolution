@@ -12,6 +12,9 @@
 
 <script>
 import evButton from '../../../components/common/button'
+import request from '@/service/request'
+
+request.get('/login')
 
 export default {
   components: {

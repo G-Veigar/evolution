@@ -28,6 +28,8 @@ if (noNeedHacks) {
 
 Vue.config.productionTip = false
 Vue.config.devtools = process.config.devtools
+
+console.log('devtools', process.config.devtools)
 // Vue.config.performance = true
 
 // 注册全局vue插件
@@ -41,9 +43,9 @@ let rootVue = new Vue({
   render: h => h(App)
 })
 
-// 开发和测试环境中，开启vconsole调试工具
+// 开启vconsole调试工具
 if (process.config.vconsole) {
-  // 在开发环境中，装载完vconsle后再调用amount，可以避免漏掉一些console信息
+  // 异步装载完vconsle后再调用amount，可以避免漏掉一些console信息
   import('vconsole/dist/vconsole.min.js').then(async module => {
     var VConsole = module.default
     // eslint-disable-next-line no-new
