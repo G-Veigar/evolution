@@ -2,41 +2,21 @@ const path = require('path')
 const appConfig = require('./app.config.js')
 const PrerenderSPAPlugin = require('prerender-spa-plugin')
 const webpack = require('webpack')
-
 // const CspHtmlWebpackPlugin = require('csp-html-webpack-plugin')
 
-// doc: https://webpack.docschina.org/configuration/externals/#src/components/Sidebar/Sidebar.jsx
-const externals = {
-  dev: {
-  },
-  build: {
-    'vue': 'Vue',
-    'vue-router': 'VueRouter',
-    'vuex': 'Vuex',
-    'axios': 'axios'
-  }
+// 转换appConfig.libcdn配置
+let externals = {}
+let cdn = {
+  css: [],
+  js: []
 }
-
-const cdn = {
-  // 开发环境
-  dev: {
-    css: [
-      'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css'
-    ],
-    js: [
-    ]
-  },
-  // 生产环境
-  build: {
-    css: [
-      'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css'
-    ],
-    js: [
-      'https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js',
-      'https://cdnjs.cloudflare.com/ajax/libs/vue-router/3.0.1/vue-router.min.js',
-      'https://cdnjs.cloudflare.com/ajax/libs/vuex/3.0.1/vuex.min.js',
-      'https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js'
-    ]
+if (appConfig.libCdn) {
+  let cdnjs = appConfig.libCdn.js
+  if (cdnjs) {
+    for (let libItem of cdnjs) {
+      externals[libItem.lib] = libItem.external
+      cdn.js.push(libItem.url)
+    }
   }
 }
 
@@ -44,7 +24,7 @@ module.exports = {
   devServer: {
     proxy: appConfig.proxy
   },
-  publicPath: 'evolution/dist/',
+  publicPath: appConfig.publicPath,
   chainWebpack: config => {
     // loader 配置
     config.module.rule('images')
@@ -92,12 +72,7 @@ module.exports = {
 
     config.plugin('html')
       .tap(args => {
-        if (process.env.NODE_ENV === 'production') {
-          args[0].cdn = cdn.build
-        }
-        if (process.env.NODE_ENV === 'development') {
-          args[0].cdn = cdn.dev
-        }
+        args[0].cdn = cdn
         return args
       })
       .end()
@@ -183,9 +158,10 @@ module.exports = {
     //   }
     // }))
 
+    config.externals = externals
+
     // 生产环境配置
     if (process.env.NODE_ENV === 'production') {
-      config.externals = externals.build
       // 为生产环境 配置新plugin
       config.plugins.push(
         // 预渲染插件
@@ -196,8 +172,6 @@ module.exports = {
         // 开启作用域提升(scope hoisting) https://webpack.docschina.org/plugins/module-concatenation-plugin/#src/components/Sidebar/Sidebar.jsx
         new webpack.optimize.ModuleConcatenationPlugin()
       )
-    } else if (process.env.NODE_ENV === 'development') {
-      config.externals = externals.dev
     }
   }
 }

@@ -22,7 +22,6 @@ const router = new Router({
 router.beforeEach(beforeEach)
 
 router.beforeEach((to, from, next) => {
-  console.log('beforeEach 2')
   next()
 })
 

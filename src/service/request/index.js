@@ -5,11 +5,21 @@ import axios from 'axios'
 // let CancelToken = axios.CancelToken
 
 const defaultOptions = {
-  timeout: 5000
+  timeout: 5000,
+  cancel: true
 }
 
 const request = axios.create({
   timeout: defaultOptions.timeout
 })
 
-export default request
+const requestService = {
+  get (url, query, option) {
+    return request.get(url)
+  }
+  // post (url, query, option) {
+
+  // }
+}
+
+export default requestService

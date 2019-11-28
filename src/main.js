@@ -28,8 +28,6 @@ if (noNeedHacks) {
 
 Vue.config.productionTip = false
 Vue.config.devtools = process.config.devtools
-
-console.log('devtools', process.config.devtools)
 // Vue.config.performance = true
 
 // 注册全局vue插件
