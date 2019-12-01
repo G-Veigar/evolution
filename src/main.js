@@ -8,6 +8,7 @@ import viewportUnitsBuggyfill from 'viewport-units-buggyfill'
 import hacks from 'viewport-units-buggyfill/viewport-units-buggyfill.hacks'
 import plugins from './plugins'
 import '@/service/cover'
+import { userService } from '@/service/user'
 
 // normalize.css的替代方案，更小，更面向现代浏览器（非IE），默认box-sizing: border-box
 import 'modern-normalize'
@@ -34,6 +35,8 @@ Vue.config.devtools = process.config.devtools
 plugins.forEach(plugin => {
   Vue.use(plugin)
 })
+
+userService.init()
 
 let rootVue = new Vue({
   router,

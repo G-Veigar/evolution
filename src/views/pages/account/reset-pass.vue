@@ -1,25 +1,21 @@
 <template>
   <div class="login">
     <div class="login-content">
-      <div class="login-right-btn" @click="goPasswordLogin">账号密码登录</div>
-      <div class="title">
-        您好，
-        <div class="welcome">欢迎来到evo，请登录/注册</div>
-      </div>
+      <div class="title">设置密码</div>
       <login-input
         type="mobile"
         v-model="mobile"
-        class="mobile-input"
         placeholder="请输入手机号码"
-        @inputComplete="check"></login-input>
+        @inputComplete="check"
+        class="mobile-input"></login-input>
       <login-input
         type="captcha"
         v-model="captcha"
-        length="6"
         @focus="check"
-        @inputComplete="login"
-        placeholder="请输入验证码"></login-input>
-      <div class="login-tip">如您未注册，则您输入验证码即为您自动注册账号</div>
+        length="6"
+        placeholder="请输入验证码"
+        @inputComplete="checkCaptcha"
+        class="mobile-input"></login-input>
       <div class="login-wrapper">
         <button class="voice-btn" @click="getVoice">获取语音验证码</button>
         <base-button
@@ -27,8 +23,8 @@
           name="获取验证码"
           :count="loginBtnCount"
           @click="sendCaptcha"
-          @countDone="loginBtnCount=0"
           :disabled="captchaBtnDisabled"></base-button>
+        <!-- <button :class="$style.loginBtn" @click="login">获取验证码</button> -->
       </div>
     </div>
   </div>
@@ -37,21 +33,21 @@
 <script>
 import loginInput from './components/login-input'
 import baseButton from '@/components/common/button'
-import { userService } from '@/service/user'
 import api from './api'
 import { mobileReg } from '@/constants/reg.js'
 
 export default {
-  data () {
-    return {
-      mobile: '',
-      captcha: '',
-      loginBtnCount: 0,
-      captchaGetting: false
-    }
-  },
   components: {
     loginInput, baseButton
+  },
+  data () {
+    return {
+      type: this.$route.params.type,
+      mobile: this.$route.query.mobile || '',
+      captcha: '',
+      loginBtnCount: 0,
+      captchaGetting: false // 验证码发送中
+    }
   },
   computed: {
     captchaBtnDisabled () {
@@ -66,26 +62,21 @@ export default {
       }
       return true
     },
-    login () {
+    async checkCaptcha () {
       if (!this.check()) return
-      userService.SMSLogin({
+      let isOk = await api.checkCaptcha({
         mobile: this.mobile,
-        captcha: this.captcha
+        captcha: this.captcha,
+        type: 'RESETPWD'
       })
-    },
-    async sendCaptcha () {
-      if (!this.check()) return
-      this.captchaGetting = true
-      this.loginBtnCount = 60
-      try {
-        await api.sendCaptcha({
-          mobile: this.mobile,
-          type: 'LOGIN'
+      if (isOk) {
+        this.$router.push({
+          name: 'resetNewpass',
+          params: {
+            type: this.type,
+            mobile: this.mobile
+          }
         })
-        this.captchaGetting = false
-      } catch (e) {
-        this.loginBtnCount = 0
-        this.captchaGetting = false
       }
     },
     // 获取语音验证码
@@ -101,7 +92,7 @@ export default {
           try {
             await api.sendCaptcha({
               mobile: this.mobile,
-              type: 'LOGIN',
+              type: 'RESETPWD',
               isVoice: true
             })
             this.captchaGetting = false
@@ -112,19 +103,27 @@ export default {
         }
       })
     },
-    goPasswordLogin () {
-      this.$router.push({
-        path: '/pass-login',
-        query: {
-          mobile: this.mobile
-        }
-      })
+    async sendCaptcha () {
+      if (!this.check()) return
+      this.captchaGetting = true
+      this.loginBtnCount = 60
+      try {
+        await api.sendCaptcha({
+          mobile: this.mobile,
+          type: 'RESETPWD'
+        })
+        this.captchaGetting = false
+      } catch (e) {
+        this.captchaGetting = false
+      }
     }
   }
 }
 </script>
 
 <style lang="postcss" scoped>
+@import '../../../styles/var.css';
+
 .title {
   font-family: "PingFangSC-Medium";
   font-size: 72px;
@@ -138,12 +137,6 @@ export default {
   margin-top: 32px;
   margin-bottom: 24px;
   position: absolute;
-}
-.login-tip {
-  font-size: 24px;
-  line-height: 36px;
-  color: #868686;
-  margin-top: 30px;
 }
 .login-wrapper {
   display: flex;

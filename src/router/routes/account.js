@@ -9,11 +9,20 @@ let route = [
     }
   },
   {
-    path: '/register',
-    name: 'register',
-    component: () => import('@/views/pages/account/register'),
+    path: '/pass-login',
+    name: 'passLogin',
+    component: () => import('@/views/pages/account/pass-login'),
     meta: {
-      title: '注册',
+      title: '密码登录',
+      noAuth: true
+    }
+  },
+  {
+    path: '/reset-pass',
+    name: 'resetPass',
+    component: () => import('@/views/pages/account/reset-pass'),
+    meta: {
+      title: '密码登录',
       noAuth: true
     }
   }

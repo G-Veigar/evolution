@@ -1,7 +1,7 @@
 import { setPageTitle } from '../utils/browser'
 import event from '$util/event'
 import { userService } from '@/service/user'
-import { once } from 'ramda'
+import once from 'lodash/once'
 
 export function beforeEach (to, from, next) {
   // next只执行一次，防止beforeEachRoute回调重复调用next
@@ -22,5 +22,5 @@ export function beforeEach (to, from, next) {
 function checkPageAuth (noAuth) {
   // 当前页面不需要权限
   if (noAuth) return true
-  return userService.loginStatus === 1
+  return +userService.loginStatus === 1
 }

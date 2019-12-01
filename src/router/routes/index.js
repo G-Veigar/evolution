@@ -35,11 +35,6 @@ let routes = [
     ]
   },
   {
-    path: '/video',
-    name: 'video',
-    component: () => import('@/views/pages/video.vue')
-  },
-  {
     path: '*',
     name: '404',
     component: () => import('@/views/pages/error/404'),

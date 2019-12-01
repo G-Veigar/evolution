@@ -22,4 +22,4 @@ const requestService = {
   // }
 }
 
-export default requestService
+export { requestService }

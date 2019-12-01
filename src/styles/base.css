@@ -3,3 +3,34 @@
 html {
     touch-action: manipulation; /* 防止移动端300ms延迟 */
 }
+
+button {
+    border: 0;
+    border: none;
+    background-color: transparent;
+}
+
+/* placeholder 颜色 */
+input::-webkit-input-placeholder{
+    color: var(--placeholder-color) !important;
+}
+
+.login-content {
+    padding: 170px 70px;
+    width: 100%;
+    min-height: 100vh;
+    box-sizing: border-box;
+    position: relative;
+    background-color: #ffffff;
+    position: absolute;
+}
+
+.login-right-btn {
+    font-size: 28px;
+    line-height: 60px;
+    color: var(--main-color);
+    position: absolute;
+    right: 70px;
+    top: 130px;
+    padding-left: 20px;
+}
