@@ -28,7 +28,7 @@ if (noNeedHacks) {
 }
 
 Vue.config.productionTip = false
-Vue.config.devtools = process.config.devtools
+Vue.config.devtools = process.appConfig.devtools
 // Vue.config.performance = true
 
 // 注册全局vue插件
@@ -45,7 +45,7 @@ let rootVue = new Vue({
 })
 
 // 开启vconsole调试工具
-if (process.config.vconsole) {
+if (process.appConfig.vconsole) {
   // 异步装载完vconsle后再调用amount，可以避免漏掉一些console信息
   import('vconsole/dist/vconsole.min.js').then(async module => {
     var VConsole = module.default

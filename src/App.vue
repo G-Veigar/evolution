@@ -1,11 +1,26 @@
-<template>
-  <div id="app">
-    <router-view/>
-  </div>
-</template>
-
 <script>
+let toolComponet
+if (process.appConfig.toolComponet) {
+  toolComponet = require(/* webpackChunkName: "devtool" */'@/components/business/devtool').default
+}
+
 export default {
+  render (h) {
+    if (process.appConfig.toolComponet) {
+      return (
+        <div id="app">
+          <router-view />
+          <toolComponet />
+        </div>
+      )
+    } else {
+      return (
+        <div id="app">
+          <router-view />
+        </div>
+      )
+    }
+  }
 }
 </script>
 

@@ -22,6 +22,8 @@ let configs = {
   track: prod,
   // vue devtools, 默认：dev
   devtools: dev,
+  // 自定义的tool工具组件
+  toolComponet: dev,
   // devServer的proxy：https://cli.vuejs.org/zh/config/#devserver-proxy
   proxy: 'https://www.easy-mock.com/mock/5ddea9a786f1b9143b86d20a',
   // vue.config.js的publicPath

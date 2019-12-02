@@ -79,7 +79,7 @@ module.exports = {
 
     config.plugin('define')
       .tap(args => {
-        args[0]['process.config'] = {
+        args[0]['process.appConfig'] = {
           ...appConfig
         }
         return args
