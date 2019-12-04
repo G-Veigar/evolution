@@ -20,7 +20,7 @@ export function beforeEach (to, from, next) {
 
 // 检查当前用户有无此页面的访问权限
 function checkPageAuth (noAuth) {
-  // 当前页面不需要权限
-  if (noAuth) return true
+  // 页面配置不需要权限，或者在Selenium,puppeteer等自动化驱动程序中不需要权限
+  if (noAuth || navigator.webdriver) return true
   return +userService.loginStatus === 1
 }

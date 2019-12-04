@@ -1,7 +1,6 @@
 const path = require('path')
 const appConfig = require('./app.config.js')
 const PrerenderSPAPlugin = require('prerender-spa-plugin')
-const webpack = require('webpack')
 // const CspHtmlWebpackPlugin = require('csp-html-webpack-plugin')
 
 // 转换appConfig.libcdn配置
@@ -164,13 +163,12 @@ module.exports = {
     if (process.env.NODE_ENV === 'production') {
       // 为生产环境 配置新plugin
       config.plugins.push(
-        // 预渲染插件
+        // 预渲染插件，必须配合路由的history模式才能使用，https://github.com/chrisvfritz/prerender-spa-plugin
+        // TODO: 预渲染配置抽离到配置文件
         new PrerenderSPAPlugin({
           staticDir: path.join(__dirname, 'dist'),
-          routes: ['/ui']
-        }),
-        // 开启作用域提升(scope hoisting) https://webpack.docschina.org/plugins/module-concatenation-plugin/#src/components/Sidebar/Sidebar.jsx
-        new webpack.optimize.ModuleConcatenationPlugin()
+          routes: appConfig.prerenderRouteList
+        })
       )
     }
   }

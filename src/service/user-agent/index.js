@@ -19,6 +19,7 @@ uaObj.isWeixin = ua.includes('micromessenger')
 uaObj.isIos = isIos
 uaObj.isAndroid = isAndroid
 uaObj.isMobile = isIos || isAndroid || /SymbianOS|Windows Phone/i.test(ua)
+uaObj.isWebdriver = navigator.webdriver // Selenium,puppeteer等自动化驱动程序
 
 // 支持连点语法：uaService.isIos.isMobile.isWeixin())
 let uaService = new Proxy(uaObj, {

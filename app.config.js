@@ -65,11 +65,16 @@ let configs = {
         external: 'axios'
       }]
     }
-  }
+  },
+  // 预渲染路由列表
+  prerenderRouteList: [
+    '/mine'
+  ]
 }
 
+// 根据环境转换值
 for (let key in configs) {
-  if (typeof configs[key] !== 'object') continue
+  if (Object.prototype.toString.call(configs[key]) !== '[object Object]') continue
   if (dev) {
     configs[key] = configs[key].dev || null
   } else if (prod) {
