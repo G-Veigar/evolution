@@ -5,6 +5,7 @@
 - [常用库](#常用库)
     - [时间日期](#时间日期)
         - [day.js](#dayjs)
+        - [date-fns](#date-fns)
     - [动画](#动画)
         - [animate.css](#animatecss)
         - [anime](#anime)
@@ -39,6 +40,11 @@
 ### day.js
 
 [day.js](https://github.com/iamkun/dayjs)
+
+### date-fns
+
+基于函数的设计风格，相比OOP风格的day.js，可以做tree-sharking
+[date-fns](https://date-fns.org/)
 
 ## 动画
 

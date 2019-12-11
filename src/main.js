@@ -9,10 +9,8 @@ import hacks from 'viewport-units-buggyfill/viewport-units-buggyfill.hacks'
 import plugins from './plugins'
 import '@/service/cover'
 import { userService } from '@/service/user'
-
 // normalize.css的替代方案，更小，更面向现代浏览器（非IE），默认box-sizing: border-box
 import 'modern-normalize'
-
 import('./styles/base.css')
 
 // 根据特性检测 判断是否需要hacks视口单位
@@ -56,3 +54,7 @@ if (process.appConfig.vconsole) {
 } else {
   rootVue.$mount('#app')
 }
+
+// TODO: 思考OOP 与 tree-sharking，并优化，例如date-fns代替day.js
+// TODO: 广告位，后台配置化弹框
+// TODO: 骨架屏

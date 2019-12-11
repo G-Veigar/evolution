@@ -164,7 +164,9 @@ module.exports = {
       // 为生产环境 配置新plugin
       config.plugins.push(
         // 预渲染插件，必须配合路由的history模式才能使用，https://github.com/chrisvfritz/prerender-spa-plugin
+        // FIXME: 预渲染配置抽离到配置文件
         // TODO: 预渲染配置抽离到配置文件
+        // TAG: 预渲染配置抽离到配置文件
         new PrerenderSPAPlugin({
           staticDir: path.join(__dirname, 'dist'),
           routes: appConfig.prerenderRouteList

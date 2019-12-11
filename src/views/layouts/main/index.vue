@@ -1,12 +1,13 @@
-<template>
+<!--<template>
   <div class="layout">
     <router-view/>
     <tab-bar
       :nav="tabbarList"
       :redPoint="tabbarRedPoint"
       @tabChange="handleTabChange"></tab-bar>
+    <component v-if="asyncApiComponent" :is="asyncApiComponent"></component>
   </div>
-</template>
+</template>-->
 
 <script>
 import loanIcon from './img/loan@3x.png'
@@ -21,6 +22,19 @@ import { mapState, mapMutations } from 'vuex'
 
 export default {
   name: 'index-layout',
+  render (h) {
+    var isComponent = this.asyncApiComponent
+    return (
+      <div class="layout">
+        <router-view/>
+        <tab-bar
+          nav={this.tabbarList}
+          redPoint={this.tabbarRedPoint}
+          vOn:tabChange={this.handleTabChange}/>
+        {this.asyncApiComponent ? <isComponent {...this.asyncApiComponentProps}/> : null}
+      </div>
+    )
+  },
   data () {
     return {
       tabbarList: [
@@ -43,11 +57,13 @@ export default {
           text: '我的'
         }
       ],
-      hasOverdue: false
+      hasOverdue: false,
+      asyncApiComponent: null, // 异步组件
+      asyncApiComponentProps: null // 异步组件参数对象
     }
   },
   computed: {
-    ...mapState(['tabbarRedPoint'])
+    ...mapState(['tabbarRedPoint', 'apiComponent'])
   },
   components: { tabBar },
   methods: {
@@ -62,6 +78,16 @@ export default {
     //   }
     // },
     handleTabChange (index) {
+      console.log('handleTabChange', index)
+    }
+  },
+  watch: {
+    apiComponent (val) {
+      let compName = val.name
+      this.asyncApiComponentProps = val.props
+      import(`../../../components/common/${compName}/index.vue`).then(({ default: comp }) => {
+        this.asyncApiComponent = comp
+      })
     }
   },
   created () {

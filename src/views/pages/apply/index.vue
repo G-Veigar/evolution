@@ -6,12 +6,14 @@
     <input type="text" v-model="val1">
     <br/>
     <input type="text" v-model="val2">
-    <button @click="add">add</button>
+    <button ref="haha" @click="add">add</button>
   </div>
 </template>
 
 <script>
 import evButton from '../../../components/common/button'
+import { mapMutations } from 'vuex'
+
 // import request from '@/service/request'
 
 // request.get('/login')
@@ -23,12 +25,13 @@ export default {
   },
   data () {
     return {
-      val1: 0,
+      val1: '332323',
       val2: 0,
       hahaShow: true
     }
   },
   methods: {
+    ...mapMutations(['setApiComponent']),
     hehe () {
       let newDiv = document.createElement('div')
       newDiv.innerText = 'hehehe'
@@ -41,6 +44,20 @@ export default {
     add () {
       alert(this.val1 + this.val2)
     }
+  },
+  mounted () {
+    // 模拟请求接口获取异步组件配置
+    let el = this.$refs.haha
+    let props = {
+      name: 'guide-modal',
+      props: {
+        props: {
+          value: true,
+          el
+        }
+      }
+    }
+    this.setApiComponent(props)
   }
 }
 </script>

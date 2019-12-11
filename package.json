@@ -22,8 +22,8 @@
     "@vue/babel-helper-vue-jsx-merge-props": "^1.0.0",
     "@vue/babel-preset-jsx": "^1.1.2",
     "axios": "^0.19.0",
-    "core-js": "^3.4.5",
-    "dayjs": "^1.8.17",
+    "core-js": "^3.4.8",
+    "date-fns": "^2.8.1",
     "lodash": "^4.17.15",
     "mand-mobile": "^2.5.6",
     "modern-normalize": "^0.5.0",
@@ -36,7 +36,7 @@
     "vuex": "^3.1.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.7.4",
+    "@babel/core": "^7.7.5",
     "@storybook/addon-actions": "^5.2.8",
     "@storybook/addon-links": "^5.2.8",
     "@storybook/addons": "^5.2.8",
