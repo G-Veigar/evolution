@@ -1,14 +1,3 @@
-<!--<template>
-  <div class="layout">
-    <router-view/>
-    <tab-bar
-      :nav="tabbarList"
-      :redPoint="tabbarRedPoint"
-      @tabChange="handleTabChange"></tab-bar>
-    <component v-if="asyncApiComponent" :is="asyncApiComponent"></component>
-  </div>
-</template>-->
-
 <script>
 import loanIcon from './img/loan@3x.png'
 import loanIcon2 from './img/loan2@3x.png'
@@ -59,7 +48,8 @@ export default {
       ],
       hasOverdue: false,
       asyncApiComponent: null, // 异步组件
-      asyncApiComponentProps: null // 异步组件参数对象
+      asyncApiComponentProps: null, // 异步组件参数对象
+      asyncApiComponentData: null
     }
   },
   computed: {
@@ -78,13 +68,17 @@ export default {
     //   }
     // },
     handleTabChange (index) {
-      console.log('handleTabChange', index)
     }
   },
   watch: {
     apiComponent (val) {
       let compName = val.name
+      // TODO:异步组件数据更新问题
       this.asyncApiComponentProps = val.props
+      this.asyncApiComponentData = val.props.props
+      let handleInput = this.asyncApiComponentProps.on.input
+      handleInput = handleInput.bind(this)
+      this.asyncApiComponentProps.on.input = handleInput
       import(`../../../components/common/${compName}/index.vue`).then(({ default: comp }) => {
         this.asyncApiComponent = comp
       })

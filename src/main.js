@@ -56,5 +56,9 @@ if (process.appConfig.vconsole) {
 }
 
 // TODO: 思考OOP 与 tree-sharking，并优化，例如date-fns代替day.js
-// TODO: 广告位，后台配置化弹框
+// TODO: 广告位，后台配置化弹框,引导，其他弹框
 // TODO: 骨架屏
+// TODO: 项目UML
+// TODO: 引导层组件处理resize
+// 如果代码不够清晰以至于需要一个注释，那么或许它应该被重写。
+// 自描述/自解释型注释,代码存在任何巧妙和不显而易见的方法，那绝对需要注释。

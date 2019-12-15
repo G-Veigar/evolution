@@ -54,6 +54,11 @@ export default {
         props: {
           value: true,
           el
+        },
+        on: {
+          input (val) {
+            this.value = val
+          }
         }
       }
     }

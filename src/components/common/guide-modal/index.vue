@@ -1,5 +1,5 @@
 <template>
-  <div class="guide-modal-wrapper" v-if="value">
+  <div class="guide-modal-wrapper" v-if="value" @click="handleMaskClick">
     <div
       class="guide-main"
       :class="{transition: transition}"
@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import _ from 'lodash'
 
 function fixedBody () {
   var scrollTop = document.body.scrollTop || document.documentElement.scrollTop
@@ -57,11 +58,13 @@ export default {
   },
   data () {
     return {
+      resizeTag: 1 // 记录resize变更，为了触发computed计算
     }
   },
   computed: {
     domRect () {
-      if (!this.el) return null
+      // 这里的resizeTag只是为了重新计算
+      if (!this.el || !this.resizeTag) return null
       let rect = this.el.getBoundingClientRect()
       let rectData = {
         left: rect.left,
@@ -103,6 +106,20 @@ export default {
       }
     }
   },
+  methods: {
+    handleMaskClick () {
+      this.$emit('input', false)
+    },
+    onResize () {
+      const handleResize = _.throttle(() => {
+        this.resizeTag++
+      }, 300)
+      window.addEventListener('resize', handleResize)
+      this.$once('hook:beforeDestroy', () => {
+        window.removeEventListener('resize', handleResize)
+      })
+    }
+  },
   watch: {
     value: {
       handler (value) {
@@ -111,9 +128,8 @@ export default {
       immediate: true
     }
   },
-  created () {
-    this.windowWidth = document.documentElement.clientWidth
-    this.windowHeight = document.documentElement.clientHeight
+  mounted () {
+    this.onResize()
   }
 }
 </script>
