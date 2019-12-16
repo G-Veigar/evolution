@@ -1,20 +1,7 @@
-<!-- TOC -->
+# 性能优化
 
-- [服务端渲染与预渲染](#服务端渲染与预渲染)
-    - [预渲染(prerender)](#预渲染prerender)
-        - [使用webpack插件[prerender-spa-plugin](https://github.com/chrisvfritz/prerender-spa-plugin)](#使用webpack插件prerender-spa-pluginhttpsgithubcomchrisvfritzprerender-spa-plugin)
-- [首屏渲染优化](#首屏渲染优化)
-    - [增加loading图](#增加loading图)
-        - [利用框架特性，#app中的数据会在框架管理（对于vue，即$mount('#app')）后被丢弃，可以将loading图放在#app中](#利用框架特性app中的数据会在框架管理对于vue即mountapp后被丢弃可以将loading图放在app中)
-- [开启vue-cli 构建时的 modern模式，为现代浏览器交付未转义的es6代码，同时为老旧浏览器交付转义后的es5代码](#开启vue-cli-构建时的-modern模式为现代浏览器交付未转义的es6代码同时为老旧浏览器交付转义后的es5代码)
-- [组件懒加载](#组件懒加载)
-    - [利用webpack的Code Splitting（原理同路由懒加载）](#利用webpack的code-splitting原理同路由懒加载)
-- [组件预加载](#组件预加载)
-- [文件压缩](#文件压缩)
-    - [图片压缩](#图片压缩)
-- [SPA路由滚动行为](#spa路由滚动行为)
+[[toc]]
 
-<!-- /TOC -->
 ## 服务端渲染与预渲染
 
 ### 预渲染(prerender)

@@ -1,39 +1,6 @@
 # 常用库
 
-<!-- TOC -->
-
-- [常用库](#常用库)
-    - [时间日期](#时间日期)
-        - [day.js](#dayjs)
-        - [date-fns](#date-fns)
-    - [动画](#动画)
-        - [animate.css](#animatecss)
-        - [anime](#anime)
-    - [浏览器兼容性](#浏览器兼容性)
-        - [Modernizr](#modernizr)
-    - [移动端优化](#移动端优化)
-        - [fastclick](#fastclick)
-    - [拖放/排序](#拖放排序)
-        - [Sortable](#sortable)
-        - [draggable](#draggable)
-    - [数据存储](#数据存储)
-        - [js-cookie](#js-cookie)
-    - [终端](#终端)
-        - [chalk](#chalk)
-    - [引导/浮窗/弹层](#引导浮窗弹层)
-        - [intro.js](#introjs)
-        - [driver.js](#driverjs)
-    - [效果](#效果)
-        - [particles.js](#particlesjs)
-        - [rough](#rough)
-        - [wired-elements](#wired-elements)
-        - [Trianglify](#trianglify)
-        - [two.js](#twojs)
-        - [CSSgram](#cssgram)
-    - [其他](#其他)
-        - [clipboard.js](#clipboardjs)
-
-<!-- /TOC -->
+[[toc]]
 
 ## 时间日期
 

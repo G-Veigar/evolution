@@ -47,22 +47,22 @@ export default {
   },
   mounted () {
     // 模拟请求接口获取异步组件配置
-    let el = this.$refs.haha
-    let props = {
-      name: 'guide-modal',
-      props: {
-        props: {
-          value: true,
-          el
-        },
-        on: {
-          input (val) {
-            this.value = val
-          }
-        }
-      }
-    }
-    this.setApiComponent(props)
+    // let el = this.$refs.haha
+    // let props = {
+    //   name: 'guide-modal',
+    //   props: {
+    //     props: {
+    //       value: true,
+    //       el
+    //     },
+    //     on: {
+    //       input (val) {
+    //         this.value = val
+    //       }
+    //     }
+    //   }
+    // }
+    // this.setApiComponent(props)
   }
 }
 </script>

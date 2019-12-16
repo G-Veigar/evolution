@@ -1,16 +1,6 @@
 # 开发中遇到的问题
 
-<!-- TOC -->
-
-- [开发中遇到的问题](#开发中遇到的问题)
-    - [移动端滚动穿透](#移动端滚动穿透)
-        - [touchmove事件preventDefault](#touchmove事件preventdefault)
-        - [设置body position:fixed](#设置body-positionfixed)
-    - [长列表性能问题](#长列表性能问题)
-        - [虚拟列表](#虚拟列表)
-        - [列表数据不挂到data中，在create钩子中设置](#列表数据不挂到data中在create钩子中设置)
-
-<!-- /TOC -->
+[[toc]]
 
 ## 移动端滚动穿透
 

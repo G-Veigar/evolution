@@ -1,16 +1,6 @@
-# 数据mock
+# mock
 
-<!-- TOC -->
-
-- [数据mock](#数据mock)
-    - [前端自己编写mock](#前端自己编写mock)
-        - [mockjs](#mockjs)
-        - [easy-mock](#easy-mock)
-    - [服务端生成mock(推荐)](#服务端生成mock推荐)
-        - [yapi](#yapi)
-        - [swagger](#swagger)
-
-<!-- /TOC -->
+[[toc]]
 
 ## 前端自己编写mock
 
