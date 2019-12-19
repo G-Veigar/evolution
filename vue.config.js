@@ -1,5 +1,5 @@
 const path = require('path')
-const appConfig = require('./app.config.js')
+const appConfig = require('./configs/index.js')
 const PrerenderSPAPlugin = require('prerender-spa-plugin')
 // const CspHtmlWebpackPlugin = require('csp-html-webpack-plugin')
 

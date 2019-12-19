@@ -13,6 +13,14 @@ const request = axios.create({
   timeout: defaultOptions.timeout
 })
 
+request.interceptors.request.use(function (config) {
+  return config
+})
+
+request.interceptors.request.use(function (response) {
+  return response
+})
+
 const requestService = {
   get (url, query, option) {
     return request.get(url)
