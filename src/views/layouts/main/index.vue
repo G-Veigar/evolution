@@ -12,6 +12,7 @@ import { mapState, mapMutations } from 'vuex'
 export default {
   name: 'index-layout',
   render (h) {
+    // TAG: 使用JSX解决动态组件传参问题（动态组件的参数形态是不确定的，用传统的template不好表达）
     var isComponent = this.asyncApiComponent
     return (
       <div class="layout">

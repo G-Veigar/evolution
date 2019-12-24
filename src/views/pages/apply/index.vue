@@ -14,10 +14,13 @@
 import evButton from '../../../components/common/button'
 import { mapMutations } from 'vuex'
 
-// import request from '@/service/request'
+import { requestService } from '@/service/request'
 
-// request.get('/login')
-// console.log(request)
+requestService.get('/login', {
+  user: 'dadwa',
+  pass: 'adawd111'
+}).then(res => {
+})
 
 export default {
   components: {

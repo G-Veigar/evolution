@@ -1,6 +1,6 @@
-// TODO:中间件模式实现request
-// 可取消
+// TODO：可取消
 import axios from 'axios'
+import modResponse from './mod-response'
 
 // let CancelToken = axios.CancelToken
 
@@ -17,13 +17,16 @@ request.interceptors.request.use(function (config) {
   return config
 })
 
-request.interceptors.request.use(function (response) {
+request.interceptors.response.use(function (response) {
+  modResponse(response)
   return response
 })
 
 const requestService = {
   get (url, query, option) {
-    return request.get(url)
+    return request.get(url, {
+      params: query
+    })
   }
   // post (url, query, option) {
 

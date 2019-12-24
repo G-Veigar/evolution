@@ -9,7 +9,7 @@
     "report": "vue-cli-service build --report",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
-    "docs:dev": "vuepress dev docs",
+    "docs": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "lint": "vue-cli-service lint",
     "analyse": "hiper -c hiper.config.js",
@@ -64,7 +64,7 @@
     "postcss-preset-env": "^6.7.0",
     "postcss-px-to-viewport": "^1.1.1",
     "prerender-spa-plugin": "^3.4.0",
-    "sass": "^1.23.7",
+    "sass": "^1.24.0",
     "sass-loader": "^7.3.1",
     "vue-template-compiler": "^2.6.11"
   },
