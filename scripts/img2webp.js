@@ -42,7 +42,6 @@ function generateWebpImg (path) {
 // 删除图片
 function deleteWebpImg (originPath, cb) {
   let webpImgPath = originPath.replace(/(.png$)|(.jpg$)|(.jpeg$)/, '.webp')
-  console.log('webpImgPath', webpImgPath)
   fs.unlink(webpImgPath, (err) => {
     if (err) {
       console.error(err)
@@ -64,7 +63,6 @@ watcher.on('all', (event, path) => {
       // generateWebpImg(path, (status) => {
       //   log('生成图片' + getWebpImgName(path) + status)
       // })
-      console.log('add or change', path)
       generateWebpImg(path)
       break
     case 'unlink':
