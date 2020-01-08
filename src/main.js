@@ -59,6 +59,6 @@ rootVue.$mount('#app')
 // TODO: pre环境变量，配置
 // TODO: vconsole插件开发
 // TODO: 构建时图片压缩效率问题
-// TODO: 生产环境vconsole隐藏彩蛋
+// TODO: sourceMap生产环境安全问题，若去掉如何整合sentry
 // 如果代码不够清晰以至于需要一个注释，那么或许它应该被重写。
 // 自描述/自解释型注释,代码存在任何巧妙和不显而易见的方法，那绝对需要注释。

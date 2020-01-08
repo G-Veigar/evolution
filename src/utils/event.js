@@ -1,5 +1,5 @@
 // 一个基于发布订阅模式的事件模块
-import aop from './aop'
+import { aop } from './function'
 
 let event
 
