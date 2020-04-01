@@ -13,7 +13,7 @@ import { userService } from '@/service/user'
 import VConsole from 'vconsole'
 // normalize.css的替代方案，更小，更面向现代浏览器（非IE），默认box-sizing: border-box
 import 'modern-normalize'
-import('./styles/base.css')
+import './styles/base.css'
 
 // 根据特性检测 判断是否需要hacks视口单位
 let noNeedHacks = Modernizr.cssvwunit && Modernizr.cssvhunit && Modernizr.cssvmaxunit && Modernizr.cssvminunit
