@@ -10,7 +10,7 @@ import { Toast } from 'mand-mobile'
 const uiToast = (msg, duration, parentNode) => {
   // 持续时间：2.5 + 每10个字符1秒
   duration = duration || (Math.floor(String(msg).length / 10) + 2.5) * 1000
-  let options = {
+  const options = {
     content: String(msg),
     duration
   }

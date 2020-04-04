@@ -6,8 +6,8 @@ import url from './url'
 const api = {
   // 发送手机验证码-免登录
   sendCaptcha ({ mobile, type, isVoice }) {
-    return new Promise(async (resolve, reject) => {
-      let res = await requestService.request({
+    return new Promise((resolve, reject) => {
+      requestService.request({
         method: 'post',
         url: url.sendCaptcha,
         data: {
@@ -16,7 +16,7 @@ const api = {
           isVoice
         },
         headers: {
-          'Authorization': userService.ipToken
+          Authorization: userService.ipToken
         }
       }, {
         autoAddParams () {
@@ -25,13 +25,14 @@ const api = {
             version: userService.version
           }
         }
+      }).then(res => {
+        if (res.errcode === 200) {
+          Ui.Toast(res.msg || '验证码已发送到您的手机，请注意查收')
+          resolve(res.data)
+        } else {
+          reject(new Error(res.msg || '获取验证码失败，请稍后再试'))
+        }
       })
-      if (res.errcode === 200) {
-        Ui.Toast(res.msg || '验证码已发送到您的手机，请注意查收')
-        resolve(res.data)
-      } else {
-        reject(new Error(res.msg || '获取验证码失败，请稍后再试'))
-      }
     })
   }
 }

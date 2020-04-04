@@ -1,4 +1,4 @@
-let route = [
+const route = [
   {
     path: '/login',
     name: 'login',

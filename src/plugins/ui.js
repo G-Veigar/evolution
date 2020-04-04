@@ -1,7 +1,7 @@
 // ui组件插件
 import ui from '../utils/ui.js'
 
-let uiPlugin = {
+const uiPlugin = {
   install (Vue) {
     Vue.prototype.$Toast = ui.Toast
   }

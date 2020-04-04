@@ -64,7 +64,7 @@ export default {
     },
     async checkCaptcha () {
       if (!this.check()) return
-      let isOk = await api.checkCaptcha({
+      const isOk = await api.checkCaptcha({
         mobile: this.mobile,
         captcha: this.captcha,
         type: 'RESETPWD'

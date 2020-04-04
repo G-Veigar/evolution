@@ -1,18 +1,18 @@
 const path = require('path')
 const appConfig = require('./configs/index.js')
-const PrerenderSPAPlugin = require('prerender-spa-plugin')
+// const PrerenderSPAPlugin = require('prerender-spa-plugin')
 // const CspHtmlWebpackPlugin = require('csp-html-webpack-plugin')
 
 // 转换appConfig.libcdn配置
-let externals = {}
-let cdn = {
+const externals = {}
+const cdn = {
   css: [],
   js: []
 }
 if (appConfig.libCdn) {
-  let cdnjs = appConfig.libCdn.js
+  const cdnjs = appConfig.libCdn.js
   if (cdnjs) {
-    for (let libItem of cdnjs) {
+    for (const libItem of cdnjs) {
       externals[libItem.lib] = libItem.external
       cdn.js.push(libItem.url)
     }
@@ -42,7 +42,7 @@ module.exports = {
             enabled: true
           },
           pngquant: {
-            quality: '75-90',
+            quality: [0.75, 0.90],
             speed: 4
           },
           gifsicle: {
@@ -91,15 +91,15 @@ module.exports = {
     }
   },
   configureWebpack: config => {
-    let alias = config.resolve.alias
+    const alias = config.resolve.alias
     config.resolve.alias = {
       ...alias,
       '$*': path.resolve(__dirname, 'src/components/'),
-      '$util': path.resolve(__dirname, 'src/utils/'),
-      '$page': path.resolve(__dirname, 'src/views/pages/'),
-      '$style': path.resolve(__dirname, 'src/styles/'),
-      '$router': path.resolve(__dirname, 'src/router/'),
-      '$plugin': path.resolve(__dirname, 'src/plugins/')
+      $util: path.resolve(__dirname, 'src/utils/'),
+      $page: path.resolve(__dirname, 'src/views/pages/'),
+      $style: path.resolve(__dirname, 'src/styles/'),
+      $router: path.resolve(__dirname, 'src/router/'),
+      $plugin: path.resolve(__dirname, 'src/plugins/')
     }
     // 配置新loader
     // config.module.rules.push({
@@ -160,18 +160,18 @@ module.exports = {
     config.externals = externals
 
     // 生产环境配置
-    if (process.env.NODE_ENV === 'production') {
-      // 为生产环境 配置新plugin
-      config.plugins.push(
-        // 预渲染插件，必须配合路由的history模式才能使用，https://github.com/chrisvfritz/prerender-spa-plugin
-        // FIXME: 预渲染配置抽离到配置文件
-        // TODO: 预渲染配置抽离到配置文件
-        // TAG: 预渲染配置抽离到配置文件
-        new PrerenderSPAPlugin({
-          staticDir: path.join(__dirname, 'dist'),
-          routes: appConfig.prerenderRouteList
-        })
-      )
-    }
+    // if (process.env.NODE_ENV === 'production') {
+    //   // 为生产环境 配置新plugin
+    //   config.plugins.push(
+    //     // 预渲染插件，必须配合路由的history模式才能使用，https://github.com/chrisvfritz/prerender-spa-plugin
+    //     // FIXME: 预渲染配置抽离到配置文件
+    //     // TODO: 预渲染配置抽离到配置文件
+    //     // TAG: 预渲染配置抽离到配置文件
+    //     new PrerenderSPAPlugin({
+    //       staticDir: path.join(__dirname, 'dist'),
+    //       routes: appConfig.prerenderRouteList
+    //     })
+    //   )
+    // }
   }
 }

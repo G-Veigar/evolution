@@ -71,8 +71,8 @@ export default {
         this.$emit('input', e.target.value)
         return false
       }
-      let value = this.formatVal(e.target.value)
-      let inputElem = this.$refs.input
+      const value = this.formatVal(e.target.value)
+      const inputElem = this.$refs.input
       inputElem.value = value
       this.$emit('input', value)
       // 输入到指定位数后，通知父组件

@@ -4,7 +4,7 @@ import { aop } from './function'
 let event
 
 (function () {
-  let list = {}
+  const list = {}
   event = {
     // 订阅
     on (eventName, cb) {
@@ -15,7 +15,7 @@ let event
     },
     // 订阅一次
     once (eventName, cb) {
-      let onceCb = aop(cb, {
+      const onceCb = aop(cb, {
         after () {
           event.off(eventName, onceCb)
         }
@@ -24,14 +24,14 @@ let event
     },
     // 发布/通知
     emit (eventName, payload) {
-      let cbs = list[eventName]
+      const cbs = list[eventName]
       cbs && cbs.forEach(cb => {
         cb(payload)
       })
     },
     // 移除
     off (eventName, cb) {
-      let cbs = list[eventName]
+      const cbs = list[eventName]
       if (!cb) {
         list[eventName] = []
       } else {

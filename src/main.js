@@ -16,7 +16,7 @@ import 'modern-normalize'
 import './styles/base.css'
 
 // 根据特性检测 判断是否需要hacks视口单位
-let noNeedHacks = Modernizr.cssvwunit && Modernizr.cssvhunit && Modernizr.cssvmaxunit && Modernizr.cssvminunit
+const noNeedHacks = Modernizr.cssvwunit && Modernizr.cssvhunit && Modernizr.cssvmaxunit && Modernizr.cssvminunit
 if (noNeedHacks) {
   viewportUnitsBuggyfill.init()
 } else {
@@ -38,7 +38,7 @@ plugins.forEach(plugin => {
 
 userService.init()
 
-let rootVue = new Vue({
+const rootVue = new Vue({
   router,
   store,
   render: h => h(App)

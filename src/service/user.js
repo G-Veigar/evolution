@@ -1,6 +1,6 @@
 import router from '@/router'
 
-let userService = {
+const userService = {
   // 登录状态—— 0：未登录，1：登录中
   loginStatus: 0,
   // 初始化用户数据

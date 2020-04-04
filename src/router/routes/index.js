@@ -1,4 +1,4 @@
-let routeConfigs = require.context('.', false, /\.js$/)
+const routeConfigs = require.context('.', false, /\.js$/)
 
 let routes = [
   {
@@ -46,7 +46,7 @@ let routes = [
 ]
 
 routeConfigs.keys().forEach(routeItem => {
-  let routeConfigItem = routeConfigs(routeItem).default
+  const routeConfigItem = routeConfigs(routeItem).default
   // 不处理入口文件index.js
   if (routeItem !== './index.js') {
     routes = routes.concat(routeConfigItem)

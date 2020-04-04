@@ -36,7 +36,7 @@ export default {
   methods: {
     ...mapMutations(['setApiComponent']),
     hehe () {
-      let newDiv = document.createElement('div')
+      const newDiv = document.createElement('div')
       newDiv.innerText = 'hehehe'
       document.getElementById('page-apply').appendChild(newDiv)
       this.hahaShow = !this.hahaShow

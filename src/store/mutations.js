@@ -1,4 +1,4 @@
-let mutations = {
+const mutations = {
   setRedPoint (state, data) {
     state.tabbarRedPoint = data
   },

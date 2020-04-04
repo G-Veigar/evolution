@@ -19,8 +19,8 @@ export default {
     }
   },
   mounted () {
-    let toolKey = Symbol('toolComponent')
-    let toolKeyData = window[toolKey] = {
+    const toolKey = Symbol('toolComponent')
+    const toolKeyData = window[toolKey] = {
       clickCount: 0,
       lastTime: 0
     }
@@ -33,7 +33,7 @@ export default {
         toolKeyData.clickCount = 1
         toolKeyData.lastTime = Date.now()
       } else {
-        let now = Date.now()
+        const now = Date.now()
         if (now - toolKeyData.lastTime < 500) {
           toolKeyData.clickCount++
           toolKeyData.lastTime = now
