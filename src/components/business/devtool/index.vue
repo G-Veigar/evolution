@@ -1,7 +1,10 @@
 <template>
-  <div class="devtool">
-    <div class="devtool-modal" v-if="devtoolModalShow" @click.self="devtoolModalShow = false">
-      <div class="devtool-modal-main"></div>
+  <div class="devtool" v-if="devtoolModalShow">
+    <div class="devtool-modal" @click.self="devtoolModalShow = false">
+      <div class="devtool-modal-main">
+        <div class="main-title">开发者工具</div>
+        <button class="tool-btn" @click="clearCookies">清除cookie</button>
+      </div>
     </div>
   </div>
 </template>
@@ -16,6 +19,18 @@ export default {
   methods: {
     openDevtoolModal () {
       this.devtoolModalShow = true
+    },
+    // 清除所有的cookie
+    clearCookies () {
+      // TODO:这里可能需要先掉后台接口，有些cookie（http-only），js无法清除
+      const keys = document.cookie.match(/[^ =;]+(?==)/g)
+      if (keys) {
+        for (var i = keys.length; i--;) {
+          document.cookie = keys[i] + '=0;path=/;expires=' + new Date(0).toUTCString() // 清除当前域名下的,例如：m.ratingdog.cn
+          document.cookie = keys[i] + '=0;path=/;domain=' + document.domain + ';expires=' + new Date(0).toUTCString() // 清除当前域名下的，例如 .m.ratingdog.cn
+          document.cookie = keys[i] + '=0;path=/;domain=ratingdog.cn;expires=' + new Date(0).toUTCString() // 清除一级域名下的或指定的，例如 .ratingdog.cn
+        }
+      }
     }
   },
   mounted () {
@@ -47,7 +62,7 @@ export default {
 }
 </script>
 
-<style lang="postcss">
+<style lang="postcss" scoped>
 .devtool {
   & .devtool-btn {
     position: fixed;
@@ -76,7 +91,18 @@ export default {
       height: 70%;
       background-color: #ffffff;
       transform: translate(-50%, -50%);
+      padding: 30px 20px;
+    }
+
+    & .main-title {
+      text-align: center;
+      margin-bottom: 20px;
     }
   }
+}
+
+.tool-btn {
+  border: 1px solid #000;
+  margin-bottom: 20px;
 }
 </style>

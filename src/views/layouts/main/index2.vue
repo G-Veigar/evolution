@@ -7,13 +7,13 @@ import mineIcon from './img/mine@3x.png'
 import mineIcon2 from './img/mine2@3x.png'
 import tabBar from '@/components/common/tabbar/index'
 import { mapState, mapMutations } from 'vuex'
-// import event from '$util/event'
+// import guideModal from '@/components/common/guide-modal/index'
 
 export default {
   name: 'index-layout',
   render (h) {
     // TAG: 使用JSX解决动态组件传参问题（动态组件的参数形态是不确定的，用传统的template不好表达）
-    var isComponent = this.asyncApiComponent
+    var isComponent = this.asyncApiComponent && this.asyncApiComponent.component
     return (
       <div class="layout">
         <router-view/>
@@ -21,7 +21,7 @@ export default {
           nav={this.tabbarList}
           redPoint={this.tabbarRedPoint}
           vOn:tabChange={this.handleTabChange}/>
-        {this.asyncApiComponent ? <isComponent {...this.asyncApiComponentProps}/> : null}
+        {isComponent ? <isComponent {...this.asyncApiComponent.props}/> : null}
       </div>
     )
   },
@@ -48,9 +48,10 @@ export default {
         }
       ],
       hasOverdue: false,
-      asyncApiComponent: null, // 异步组件
-      asyncApiComponentProps: null, // 异步组件参数对象
-      asyncApiComponentData: null
+      // 异步组件
+      // param component 组件对象
+      // param props 组件的props
+      asyncApiComponent: null
     }
   },
   computed: {
@@ -73,22 +74,18 @@ export default {
   },
   watch: {
     apiComponent (val) {
-      // let compName = val.name
+      // const compName = val.name
       // TODO:异步组件数据更新问题
       this.asyncApiComponentProps = val.props
       this.asyncApiComponentData = val.props.props
       let handleInput = this.asyncApiComponentProps.on.input
       handleInput = handleInput.bind(this)
       this.asyncApiComponentProps.on.input = handleInput
+      // TODO fix这种引入方式
       // import(`../../../components/common/${compName}/index.vue`).then(({ default: comp }) => {
       //   this.asyncApiComponent = comp
       // })
     }
-  },
-  created () {
-    // event.on('beforeEachRoute', data => {
-    //   console.log(data)
-    // })
   }
 }
 </script>

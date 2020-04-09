@@ -1,4 +1,5 @@
 <script>
+// 开发者工具组件
 let toolComponet
 if (process.appConfig.toolComponet) {
   toolComponet = require(/* webpackChunkName: "devtool" */'@/components/business/devtool').default
@@ -6,20 +7,12 @@ if (process.appConfig.toolComponet) {
 
 export default {
   render (h) {
-    if (process.appConfig.toolComponet) {
-      return (
-        <div id="app">
-          <router-view />
-          <toolComponet />
-        </div>
-      )
-    } else {
-      return (
-        <div id="app">
-          <router-view />
-        </div>
-      )
-    }
+    return (
+      <div id="app">
+        <router-view />
+        {toolComponet ? <toolComponet /> : null}
+      </div>
+    )
   }
 }
 </script>

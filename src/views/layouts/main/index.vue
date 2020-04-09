@@ -17,7 +17,6 @@ import mineIcon from './img/mine@3x.png'
 import mineIcon2 from './img/mine2@3x.png'
 import tabBar from '@/components/common/tabbar/index'
 import { mapState, mapMutations } from 'vuex'
-// import event from '$util/event'
 
 export default {
   name: 'index-layout',
@@ -28,13 +27,19 @@ export default {
           pageName: 'apply',
           icon: loanIcon2,
           activeIcon: loanIcon,
-          text: '借款'
+          text: '主页'
+        },
+        {
+          pageName: 'discover',
+          icon: loanIcon2,
+          activeIcon: loanIcon,
+          text: '发现'
         },
         {
           pageName: 'repay',
           icon: repayIcon2,
           activeIcon: repayIcon,
-          text: '还款'
+          text: '订单'
         },
         {
           pageName: 'mine',
@@ -46,18 +51,13 @@ export default {
     }
   },
   computed: {
-    ...mapState(['tabbarRedPoint', 'apiComponent'])
+    ...mapState(['tabbarRedPoint'])
   },
   components: { tabBar },
   methods: {
     ...mapMutations(['setRedPoint']),
     handleTabChange (index) {
     }
-  },
-  created () {
-    // event.on('beforeEachRoute', data => {
-    //   console.log(data)
-    // })
   }
 }
 </script>

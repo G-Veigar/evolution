@@ -1,4 +1,5 @@
-// 一个基于发布订阅模式的事件模块
+// 事件模块
+// TAG 设计模式 - 发布/订阅
 import { aop } from './function'
 
 let event

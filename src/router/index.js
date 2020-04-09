@@ -21,8 +21,4 @@ const router = new Router({
 // 注册全局路由导航守卫
 router.beforeEach(beforeEach)
 
-router.beforeEach((to, from, next) => {
-  next()
-})
-
 export default router

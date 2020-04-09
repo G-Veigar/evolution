@@ -2,15 +2,15 @@
  * @Author: gaoge
  * @Date: 2019-12-20 02:02:48
  * @Last Modified by: gaoge
- * @Last Modified time: 2020-01-02 14:55:10
+ * @Last Modified time: 2020-04-05 01:33:01
  * app配置文件，使用webpackDefinePlugin，配合代码压缩，可以在构建时去除无用代码。
  * 本文件是构建时文件(node环境)，不是运行时文件，不会被打包到dist中
  * 修改此文件不能自动刷新，需重新npm run dev
  */
 
-let configs = {
+const configs = {
   // vconsole调试工具是否直接开启
-  vconsole: false,
+  vconsole: true,
   // vconsole秘钥
   vconsoleSecret: JSON.stringify('openvconsole2020'),
   // js压缩，关闭js压缩可以方便查看打包编译后的代码

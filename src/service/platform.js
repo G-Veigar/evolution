@@ -1,5 +1,6 @@
 const ua = navigator.userAgent.toLowerCase()
 
+// 设置页面的title
 const setPageTitle = (title) => {
   if (title === undefined || window.document.title === title) {
     return

@@ -1,12 +1,11 @@
 // 重写覆盖了部分原生函数
-
 const timerList = {
   timeout: [],
   interval: []
 }
 
 const setTimeout = window.setTimeout
-const setInterval = window.setTimeout
+const setInterval = window.setInterval
 
 function setTimeout2 () {
   const timer = setTimeout.apply(this, arguments)
