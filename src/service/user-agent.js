@@ -9,8 +9,8 @@ let resValue = true
 let currentValue = true
 
 // 返回链式调用结果，并重置
-let uaObj = function () {
-  let res = resValue
+const uaObj = function () {
+  const res = resValue
   resValue = true
   return res
 }
@@ -22,7 +22,7 @@ uaObj.isMobile = isIos || isAndroid || /SymbianOS|Windows Phone/i.test(ua)
 uaObj.isWebdriver = navigator.webdriver // Selenium,puppeteer等自动化驱动程序
 
 // 支持连点语法：uaService.isIos.isMobile.isWeixin())
-let uaService = new Proxy(uaObj, {
+const uaService = new Proxy(uaObj, {
   get (target, key, proxy) {
     currentValue = target[key]
     resValue = (resValue && currentValue)

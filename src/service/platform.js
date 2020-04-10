@@ -1,5 +1,10 @@
 const ua = navigator.userAgent.toLowerCase()
 
+const isIos = /iphone|ipod|ipad/.test(ua)
+const isAndroid = /android/.test(ua)
+const isWechat = ua.includes('micromessenger')
+const isMobile = (isIos || isAndroid || /SymbianOS|Windows Phone/i.test(ua))
+
 // 设置页面的title
 const setPageTitle = (title) => {
   if (title === undefined || window.document.title === title) {
@@ -21,4 +26,10 @@ const setPageTitle = (title) => {
   }
 }
 
-export { setPageTitle }
+export {
+  setPageTitle,
+  isIos,
+  isAndroid,
+  isWechat,
+  isMobile
+}

@@ -1,25 +1,24 @@
 <template>
-  <div id="page-apply" v-show="hahaShow">apply
-    <ev-button>haha</ev-button>
-    <ev-button :disabled="true">haha</ev-button>
+  <div id="page-apply" v-show="hahaShow">
+    <h1>{{testData}}</h1>
+    <h2>{{testData2}}</h2>
+    <ev-button @click="setH1">set h1</ev-button>
     <br/>
-    <input type="text" v-model="val1">
+    <ev-button @click="setH2">set h2</ev-button>
     <br/>
-    <input type="text" v-model="val2">
-    <button ref="haha" @click="add">add</button>
   </div>
 </template>
 
 <script>
 import evButton from '../../../components/common/button'
-import { mapMutations } from 'vuex'
-import { requestService } from '@/service/request'
+import { mapState, mapMutations } from 'vuex'
+// import { requestService } from '@/service/request'
 
-requestService.get('/login', {
-  user: 'dadwa',
-  pass: 'adawd111'
-}).then(res => {
-})
+// requestService.get('/login', {
+//   user: 'dadwa',
+//   pass: 'adawd111'
+// }).then(res => {
+// })
 
 export default {
   components: {
@@ -32,8 +31,17 @@ export default {
       hahaShow: true
     }
   },
+  computed: {
+    ...mapState(['testData', 'testData2'])
+  },
   methods: {
-    ...mapMutations(['setApiComponent']),
+    ...mapMutations(['setApiComponent', 'setTestData', 'setTestData2']),
+    setH1 () {
+      this.setTestData('new')
+    },
+    setH2 () {
+      this.setTestData2('new2')
+    },
     hehe () {
       const newDiv = document.createElement('div')
       newDiv.innerText = 'hehehe'
@@ -42,9 +50,6 @@ export default {
       setTimeout(() => {
         this.hahaShow = true
       }, 1000)
-    },
-    add () {
-      alert(this.val1 + this.val2)
     }
   },
   mounted () {

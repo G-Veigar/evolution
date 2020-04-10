@@ -130,7 +130,7 @@ export default {
   font-size: 72px;
   color: var(--main-color);
   position: relative;
-  margin-bottom: 120px;
+  margin-bottom: 420px;
 }
 .welcome {
   font-size: 42px;

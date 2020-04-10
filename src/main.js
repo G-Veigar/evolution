@@ -1,10 +1,13 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router/index'
-import store from './store/index'
+import store, { storeState } from './store/index'
+// 插件
+import vuexPersistence from './plugins/vuex-persistence'
+import uiPlugin from './plugins/ui'
+import preventScrollThrough from './plugins/prevent-scroll-through'
 // 特征检测库modernizr
 import './utils/modernizr'
-import plugins from './plugins'
 import '@/service/sentry'
 // import '@/service/cover'
 import { userService } from '@/service/user'
@@ -32,10 +35,9 @@ Vue.config.productionTip = false
 Vue.config.devtools = process.appConfig.devtools
 // Vue.config.performance = true
 
-// 注册全局vue插件
-plugins.forEach(plugin => {
-  Vue.use(plugin)
-})
+Vue.use(vuexPersistence, store, storeState)
+Vue.use(uiPlugin)
+Vue.use(preventScrollThrough)
 
 userService.init()
 
