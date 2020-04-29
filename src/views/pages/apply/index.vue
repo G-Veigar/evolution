@@ -1,16 +1,14 @@
 <template>
   <div id="page-apply" v-show="hahaShow">
-    <h1>{{testData}}</h1>
-    <h2>{{testData2}}</h2>
-    <ev-button @click="setH1">set h1</ev-button>
-    <br/>
-    <ev-button @click="setH2">set h2</ev-button>
-    <br/>
+    <div class="data">{{num}}</div>
+    <button class="btn1" @click="add">add1</button>
+    <button @click="add">add2</button>
+    <div class="modal1" v-if="modal1" @touchstart="handleTouch">modal1</div>
+    <div class="modal2" v-if="modal2" @click="handleClick">modal2</div>
   </div>
 </template>
 
 <script>
-import evButton from '../../../components/common/button'
 import { mapState, mapMutations } from 'vuex'
 // import { requestService } from '@/service/request'
 
@@ -20,15 +18,21 @@ import { mapState, mapMutations } from 'vuex'
 // }).then(res => {
 // })
 
+const obj = {
+  a: {
+    b: 'val'
+  }
+}
+
+console.log('obj:', obj?.c?.b)
+
 export default {
-  components: {
-    evButton
-  },
   data () {
     return {
-      val1: '332323',
-      val2: 0,
-      hahaShow: true
+      hahaShow: true,
+      num: 0,
+      modal1: true,
+      modal2: true
     }
   },
   computed: {
@@ -36,11 +40,15 @@ export default {
   },
   methods: {
     ...mapMutations(['setApiComponent', 'setTestData', 'setTestData2']),
-    setH1 () {
-      this.setTestData('new')
+    handleTouch () {
+      console.log('modal1 touch')
+      this.modal1 = false
     },
-    setH2 () {
-      this.setTestData2('new2')
+    handleClick () {
+      window.alert('modal2 click!')
+    },
+    add () {
+      this.num++
     },
     hehe () {
       const newDiv = document.createElement('div')
@@ -73,3 +81,35 @@ export default {
   }
 }
 </script>
+
+<style lang="postcss" scoped>
+.data {
+  font-size: 100px;
+}
+button {
+  font-size: 50px;
+  bottom: 1px solid #aaaaaa;
+}
+.btn1 {
+  touch-action: manipulation;
+}
+.modal1 {
+  position: fixed;
+  width: 100px;
+  height: 100px;
+  left: 100px;
+  top: 100px;
+  border: 1px solid #aaa;
+  background-color: #ccaccc;
+  z-index: 3;
+}
+.modal2 {
+  position: fixed;
+  width: 150px;
+  height: 150px;
+  left: 60px;
+  top: 60px;
+  background-color: #cc5cdd;
+  z-index: 2;
+}
+</style>

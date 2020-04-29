@@ -1,7 +1,8 @@
 @import './var.css';
 
 html {
-    touch-action: manipulation; /* 防止移动端300ms延迟 */
+    /* TAG 防止移动端300ms延迟 */
+    touch-action: manipulation;
 }
 
 button {

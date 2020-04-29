@@ -4,6 +4,8 @@ const isIos = /iphone|ipod|ipad/.test(ua)
 const isAndroid = /android/.test(ua)
 const isWechat = ua.includes('micromessenger')
 const isMobile = (isIos || isAndroid || /SymbianOS|Windows Phone/i.test(ua))
+// 自动化测试程序
+const isAutomated = navigator.webdriver
 
 // 设置页面的title
 const setPageTitle = (title) => {
@@ -31,5 +33,6 @@ export {
   isIos,
   isAndroid,
   isWechat,
-  isMobile
+  isMobile,
+  isAutomated
 }
