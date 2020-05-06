@@ -4,7 +4,7 @@
  * @param {*} fun 目标函数
  * @param {*} options 选项对象，可以包含的属性为before或者after
  */
-export const aop = (fun, options) => {
+function aop (fun, options) {
   const { before, after } = options
   return function (...args) {
     before && before.call(this, args)
@@ -18,4 +18,37 @@ export const aop = (fun, options) => {
  *
  * @param {*} ms 延迟的毫秒数
  */
-export const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
+function sleep (ms) {
+  return new Promise(resolve => setTimeout(resolve, ms))
+}
+
+/**
+ * 缓存函数
+ *
+ * @param {*} fun
+ */
+function cache (fun) {
+  if (!cache._cacheMap.has(fun)) {
+    cache._cacheMap.set(fun, {})
+  }
+  return function (...args) {
+    const cacheData = cache._cacheMap.get(fun)
+    const key = JSON.stringify(args)
+    let res = cacheData[key]
+    if (res) {
+      return res
+    } else {
+      res = fun.apply(this, args)
+      cacheData[key] = res
+      return res
+    }
+  }
+}
+
+cache._cacheMap = new Map()
+
+export {
+  aop,
+  sleep,
+  cache
+}
