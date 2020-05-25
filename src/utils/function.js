@@ -23,9 +23,9 @@ function sleep (ms) {
 }
 
 /**
- * 缓存函数
+ * 缓存函数，返回一个新函数，如果输入的参数一样，直接返回执行结果
  *
- * @param {*} fun
+ * @param {*} fun 被缓存函数（必须是纯函数）
  */
 function cache (fun) {
   if (!cache._cacheMap.has(fun)) {

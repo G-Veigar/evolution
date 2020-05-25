@@ -26,33 +26,33 @@ module.exports = {
   publicPath: appConfig.publicPath,
   chainWebpack: config => {
     // loader 配置
-    config.module.rule('images')
-      .test(/\.(png|jpe?g|gif|webp)(\?.*)?$/)
-      // 图片压缩
-      .use('image-webpack-loader')
-      .loader('image-webpack-loader')
-      .tap(options => {
-        return {
-          mozjpeg: {
-            progressive: true,
-            quality: 80
-          },
-          // optipng.enabled: false will disable optipng
-          optipng: {
-            enabled: true
-          },
-          pngquant: {
-            quality: [0.75, 0.90],
-            speed: 4
-          },
-          gifsicle: {
-            interlaced: false
-          },
-          webp: {
-            quality: 80
-          }
-        }
-      })
+    // config.module.rule('images')
+    //   .test(/\.(png|jpe?g|gif|webp)(\?.*)?$/)
+    //   // 图片压缩
+    //   .use('image-webpack-loader')
+    //   .loader('image-webpack-loader')
+    //   .tap(options => {
+    //     return {
+    //       mozjpeg: {
+    //         progressive: true,
+    //         quality: 80
+    //       },
+    //       // optipng.enabled: false will disable optipng
+    //       optipng: {
+    //         enabled: true
+    //       },
+    //       pngquant: {
+    //         quality: [0.75, 0.90],
+    //         speed: 4
+    //       },
+    //       gifsicle: {
+    //         interlaced: false
+    //       },
+    //       webp: {
+    //         quality: 80
+    //       }
+    //     }
+    //   })
 
     config.module.rule('vue')
       .use('vue-loader').tap(options => {

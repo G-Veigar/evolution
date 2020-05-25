@@ -18,7 +18,9 @@ request.interceptors.request.use(function (config) {
 })
 
 request.interceptors.response.use(function (response) {
-  modResponse(response)
+  if (process.appConfig.modResponse) {
+    modResponse(response)
+  }
   return response
 })
 
