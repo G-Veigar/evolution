@@ -1,13 +1,6 @@
 # 浏览器兼容性（browser compatibility）
 
-<!-- TOC -->
-
-- [浏览器兼容性（browser compatibility）](#浏览器兼容性browser-compatibility)
-    - [优化browserslist](#优化browserslist)
-    - [页面title设置](#页面title设置)
-    - [移动端click事件300ms延迟](#移动端click事件300ms延迟)
-
-<!-- /TOC -->
+<!-- TOC -->autoauto- [浏览器兼容性（browser compatibility）](#浏览器兼容性browser-compatibility)auto    - [优化browserslist](#优化browserslist)auto    - [页面title设置](#页面title设置)auto    - [移动端click事件300ms延迟](#移动端click事件300ms延迟)autoauto<!-- /TOC -->
 
 ## 优化browserslist
 
@@ -54,7 +47,7 @@ spa应用页面路由设置title，设置document.title即可，但是在ios有�
 
 CSS属性 touch-action 用于设置触摸屏用户如何操纵元素的区域(例如，浏览器内置的缩放功能)。
 
-manipulation属性，浏览器只允许进行滚动和持续缩放操作。不允许双金缩放。
+manipulation属性，浏览器只允许进行滚动和持续缩放操作。不允许双击缩放。
 
 ```css
 html {

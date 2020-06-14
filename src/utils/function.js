@@ -47,8 +47,24 @@ function cache (fun) {
 
 cache._cacheMap = new Map()
 
+function lockAsync (asyncFun) {
+  return function (...args) {
+    if (lockAsync._cacheMap.has(asyncFun)) {
+      return Promise.reject(new Error('runing'))
+    } else {
+      lockAsync._cacheMap.set(asyncFun, true)
+    }
+    return asyncFun.apply(this, args).finally(() => {
+      lockAsync._cacheMap.delete(asyncFun)
+    })
+  }
+}
+
+lockAsync._cacheMap = new Map()
+
 export {
   aop,
   sleep,
-  cache
+  cache,
+  lockAsync
 }
