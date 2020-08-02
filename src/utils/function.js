@@ -33,6 +33,7 @@ function cache (fun) {
   }
   return function (...args) {
     const cacheData = cache._cacheMap.get(fun)
+    // 参数的JSON字符串作为缓存key值
     const key = JSON.stringify(args)
     let res = cacheData[key]
     if (res) {
@@ -44,8 +45,8 @@ function cache (fun) {
     }
   }
 }
-
-cache._cacheMap = new Map()
+// 使用WeakMap 防止内存溢出
+cache._cacheMap = new WeakMap()
 
 function lockAsync (asyncFun) {
   return function (...args) {
