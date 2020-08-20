@@ -1,9 +1,9 @@
 <!--
  * @Author: 高歌
  * @Date: 2020-06-29 13:47:41
- * @LastEditTime: 2020-07-21 01:09:39
+ * @LastEditTime: 2020-08-18 14:45:57
  * @LastEditors: 高歌
- * @FilePath: /soda-next/src/components/common/count-down/index.vue
+ * @FilePath: /evolution/src/components/common/count-down/index.vue
  * @Description: 倒计时组件，带自动纠错功能。
 -->
 <template>

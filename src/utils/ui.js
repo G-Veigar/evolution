@@ -1,4 +1,7 @@
-import { Toast } from 'mand-mobile'
+import Vue from 'vue'
+import { Toast as VantToast } from 'vant'
+
+Vue.use(VantToast)
 
 /**
  * Toast提示
@@ -7,15 +10,15 @@ import { Toast } from 'mand-mobile'
  * @param {HTMLElement} parentNode 持续时间
  * @returns {number} Toast持续时间
  */
-const uiToast = (msg, duration, parentNode) => {
+const Toast = (msg, duration, parentNode) => {
   // 持续时间：2.5 + 每10个字符1秒
   duration = duration || (Math.floor(String(msg).length / 10) + 2.5) * 1000
   const options = {
-    content: String(msg),
+    message: String(msg),
     duration
   }
   parentNode && (options.parentNode = parentNode)
-  Toast(options)
+  VantToast(options)
 }
 
 /**
@@ -23,17 +26,17 @@ const uiToast = (msg, duration, parentNode) => {
  * @param {any} [title=加载中] Loading内容
  * @param {number} duration 持续时间（毫秒数）
  */
-// const uiLoading = function (title = '加载中', duration) {
-//   Indicator.open({
-//     text: title,
-//     spinnerType: 'snake'
-//   })
-//   if (duration) {
-//     setTimeout(() => {
-//       Indicator.close()
-//     }, duration)
-//   }
-// }
+const Loading = (msg) => {
+  VantToast({
+    message: msg,
+    type: 'loading',
+    duration: 0
+  })
+}
+
+Loading.close = () => {
+  VantToast.clear()
+}
 
 // uiLoading.close = Indicator.close
 
@@ -91,10 +94,15 @@ const uiToast = (msg, duration, parentNode) => {
 // }
 
 const Ui = {
-  Toast: uiToast
+  Toast,
+  Loading
   // Loading: uiLoading,
   // Dialog: Dialog,
   // Success: Success
 }
 
 export default Ui
+export {
+  Toast,
+  Loading
+}

@@ -7,3 +7,10 @@ export function isEmptyObj (obj) {
   }
   return true
 }
+
+/**
+ * 判断是否是为promise
+ */
+export function isPromise (obj) {
+  return !!obj && (Object.prototype.toString.call(obj) === '[object Promise]')
+}

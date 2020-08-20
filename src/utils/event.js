@@ -1,6 +1,6 @@
 // 事件模块
 // TAG 设计模式 - 发布/订阅
-import { aop } from './function'
+import { aop } from './aop'
 
 let event
 

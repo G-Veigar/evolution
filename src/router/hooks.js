@@ -1,8 +1,24 @@
+/*
+ * @Author: 高歌
+ * @Date: 2020-05-13 01:08:00
+ * @LastEditTime: 2020-08-13 19:38:57
+ * @LastEditors: 高歌
+ * @FilePath: /evolution/src/router/hooks.js
+ * @Description:
+ */
 import { setPageTitle } from '../service/platform'
 import event from '$util/event'
 import { userService } from '@/service/user'
+import { holdRouteHook } from '../plugins/hold-route.js'
 
 export function beforeEach (to, from, next) {
+  console.log('beforeEach')
+  // 如果需要hole路由
+  const needHold = holdRouteHook(from)
+  if (needHold) {
+    next(false)
+    return
+  }
   // 检查页面的访问权限
   if (!checkPageAuth(to)) {
     next('/login')

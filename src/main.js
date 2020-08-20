@@ -5,6 +5,7 @@ import store, { storeState } from './store/index'
 // 插件
 import vuexPersistence from './plugins/vuex-persistence'
 import uiPlugin from './plugins/ui'
+import holdRoutePlugin from './plugins/hold-route.js'
 import preventScrollThrough from './plugins/prevent-scroll-through'
 // 特征检测库modernizr
 import './utils/modernizr'
@@ -38,6 +39,7 @@ Vue.config.devtools = process.appConfig.devtools
 Vue.use(vuexPersistence, store, storeState)
 Vue.use(uiPlugin)
 Vue.use(preventScrollThrough)
+Vue.use(holdRoutePlugin)
 
 userService.init()
 

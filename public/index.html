@@ -1,3 +1,11 @@
+<!--
+ * @Author: 高歌
+ * @Date: 2020-06-01 11:03:33
+ * @LastEditTime: 2020-08-20 17:56:26
+ * @LastEditors: 高歌
+ * @FilePath: /evolution/public/index.html
+ * @Description: 
+-->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,6 +20,11 @@
     <link href="<%= htmlWebpackPlugin.options.cdn.css[i] %>" rel="stylesheet">
     <% } %>
     <title>evolution</title>
+    <script>
+      window.__VUE_DEVTOOLS_HOST__ = '172.21.204.180' // default: localhost
+      window.__VUE_DEVTOOLS_PORT__ = '8098' // default: 8098
+    </script>
+    <script src="//172.21.204.180:8098"></script>
   </head>
   <body>
     <noscript>

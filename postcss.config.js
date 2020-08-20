@@ -1,3 +1,11 @@
+/*
+ * @Author: 高歌
+ * @Date: 2020-05-13 01:08:00
+ * @LastEditTime: 2020-08-14 19:57:15
+ * @LastEditors: 高歌
+ * @FilePath: /evolution/postcss.config.js
+ * @Description:
+ */
 module.exports = ({ file, options, env }) => {
   // let filePath = file.dirname
   // // 第三方库的白名单，会被postcss-px-to-viewport处理
@@ -45,6 +53,7 @@ module.exports = ({ file, options, env }) => {
         unitPrecision: 5, // (Number) 单位转换后保留的精度
         viewportUnit: 'vw', // (String) 希望使用的视口单位
         fontViewportUnit: 'vw', // (String) 字体使用的视口单位
+        exclude: /\/node_modules/,
         selectorBlackList: ['.ignore', '.hairlines'], // (Array) 需要忽略的CSS选择器，不会转为视口单位，使用原有的px等单位。
         minPixelValue: 1, // (Number) 设置最小的转换数值，如果为1的话，只有大于1的值会被转换
         mediaQuery: false // (Boolean) 媒体查询里的单位是否需要转换单位
