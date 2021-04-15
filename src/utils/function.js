@@ -13,43 +13,59 @@ function sleep (ms) {
  * @param {*} fun 被缓存函数（必须是纯函数）
  */
 function cache (fun) {
-  if (!cache._cacheMap.has(fun)) {
-    cache._cacheMap.set(fun, {})
-  }
+  // 使用WeakMap 防止内存溢出
+  const _cacheMap = new Map()
   return function (...args) {
-    const cacheData = cache._cacheMap.get(fun)
-    // 参数的JSON字符串作为缓存key值
-    const key = JSON.stringify(args)
-    let res = cacheData[key]
-    if (res) {
-      return res
-    } else {
-      res = fun.apply(this, args)
-      cacheData[key] = res
-      return res
+    const argsKey = JSON.stringify(args)
+    if (_cacheMap.has(argsKey)) {
+      return _cacheMap.get(argsKey)
     }
+    const res = fun.apply(this, args)
+    _cacheMap.set(argsKey, res)
+    return res
   }
 }
-// 使用WeakMap 防止内存溢出
-cache._cacheMap = new WeakMap()
 
 function lockAsync (asyncFun) {
+  const _cacheMap = new Map()
   return function (...args) {
-    if (lockAsync._cacheMap.has(asyncFun)) {
+    if (_cacheMap.has(asyncFun)) {
       return Promise.reject(new Error('runing'))
     } else {
-      lockAsync._cacheMap.set(asyncFun, true)
+      _cacheMap.set(asyncFun, true)
     }
     return asyncFun.apply(this, args).finally(() => {
-      lockAsync._cacheMap.delete(asyncFun)
+      _cacheMap.delete(asyncFun)
     })
   }
 }
 
-lockAsync._cacheMap = new Map()
+// 异步重试函数
+function retry (fun, tryNum) {
+  return function (...args) {
+    return new Promise((resolve, reject) => {
+      let callTime = 0
+      const run = fun.bind(this, ...args)
+      const _r = () => {
+        callTime++
+        run().then(res => {
+          resolve(res)
+        }).catch(e => {
+          if (callTime < tryNum) {
+            _r()
+          } else {
+            reject(e)
+          }
+        })
+      }
+      _r()
+    })
+  }
+}
 
 export {
   sleep,
   cache,
-  lockAsync
+  lockAsync,
+  retry
 }

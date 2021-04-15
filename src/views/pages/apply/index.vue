@@ -6,6 +6,7 @@
     <div class="modal1" v-if="modal1" @touchstart="handleTouch">modal1</div>
     <div class="modal2" v-if="modal2" @click="handleClick">modal2</div>
     <router-link to="/test">test</router-link>
+    <div class="test" @click="goTest">goTest</div>
   </div>
 </template>
 
@@ -50,6 +51,15 @@ export default {
     },
     add () {
       this.num++
+    },
+    goTest () {
+      this.$router.push({
+        name: 'test',
+        query: {
+          name: 'eadawd',
+          value: 3324
+        }
+      })
     },
     hehe () {
       const newDiv = document.createElement('div')

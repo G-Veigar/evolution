@@ -1,128 +1,61 @@
-// class Middleware {
-//   constructor (ctx, cb) {
-//     this.ctx = ctx // 上下文对象
-//     this.cb = cb // 最后要执行的操作
-//     this.middles = [] // 保存中间件
-//   }
+/*
+ * @Author: 高歌
+ * @Date: 2020-05-13 01:08:00
+ * @LastEditTime: 2020-10-10 14:15:11
+ * @LastEditors: 高歌
+ * @FilePath: /evolution/src/utils/middleware.js
+ * @Description: 洋葱型中间件
+ */
+function middleware (fun) {
+  // 中间件数组
+  const middles = []
+  // 中间件执行标识位
+  let index = 0
+  // 执行上下文
+  let ctx = null
+  // next函数
+  const next = async (goNext = true) => {
+    if (!goNext) {
+      return
+    }
+    const current = middles[index++]
+    if (current) {
+      await current(ctx, next)
+    }
+  }
+  const res = async (...options) => {
+    index = 0
+    ctx = options
+    await next()
+    if (index === middles.length + 1) {
+      fun(...ctx)
+    }
+  }
+  res.use = ware => {
+    middles.push(ware)
+  }
+  return res
+}
 
-//   use (middleFun) {
-//     this.middles.push(middleFun)
-//   }
+// export default middleware
 
-//   run () {
-//     let index = 0
-//     const next = () => {
-//       index++
-//     }
-//     for (let i = index; i < this.middles.length; i++) {
-//       const middleFun = this.middles[i]
-//       middleFun(this.ctx, next)
-//       // 如果中间件调用了next，index会增加
-//       if (index === i) break
-//     }
-//     (index === this.middles.length) && this.cb(this.ctx)
-//   }
-// }
+function say (text) {
+  console.log(text)
+}
 
-// class Middleware2 {
-//   constructor (ctx, cb) {
-//     this.ctx = ctx // 上下文对象
-//     this.cb = cb // 最后要执行的操作
-//     this.middles = [] // 保存中间件
-//   }
+const mwSay = middleware(say)
 
-//   use (middleFun) {
-//     this.middles.push(middleFun)
-//   }
+mwSay.use(async (ctx, next) => {
+  console.log('a')
+  ctx[0] = 'hehe'
+  await next()
+  console.log('a end')
+})
 
-//   run () {
-//     const gen = function * () {
-//       for (var i = 0; i < this.middles.length; i++) {
-//         const middleFunThunk = thunk(this.middles[i])
-//         yield middleFunThunk(this.ctx)
-//       }
-//       (i === this.middles.length) && this.cb(this.ctx)
-//     }
-//     const g = gen.call(this)
-//     const next = () => {
-//       var result = g.next()
-//       if (result.done) return
-//       result.value(next)
-//     }
-//     next()
-//   }
-// }
+mwSay.use(async (ctx, next) => {
+  console.log('b')
+  await next()
+  console.log('b end')
+})
 
-// class Middleware3 {
-//   constructor (ctx, cb) {
-//     this.ctx = ctx // 上下文对象
-//     this.cb = cb // 最后要执行的操作
-//     this.middles = [] // 保存中间件
-//   }
-
-//   use (middleFun) {
-//     this.middles.push(middleFun)
-//   }
-
-//   run () {
-
-//   }
-// }
-
-// const thunk = function (fn) {
-//   return function (...args) {
-//     return function (callback) {
-//       return fn.call(this, ...args, callback)
-//     }
-//   }
-// }
-
-// // export default Middleware
-
-// // 使用例子
-// // const router = new Middleware2({
-// //   page: '/a'
-// // }, ctx => {
-// //   console.log('jump: ' + ctx.page)
-// // })
-
-// // router.use((ctx, next) => {
-// //   // 伪代码：if(user.isNotLogin)
-// //   ctx.page = '/b'
-// //   console.log('修改跳转页面到: /b')
-// //   next()
-// // })
-
-// // router.use((ctx, next) => {
-// //   ctx.page = '/c'
-// //   console.log('即将跳转到页面：/c')
-// //   next()
-// // })
-
-// // router.run()
-
-// // 洋葱模型例子
-// const router = new Middleware2({
-//   page: '/a'
-// }, ctx => {
-//   console.log('jump: ' + ctx.page)
-// })
-
-// router.use((ctx, next) => {
-//   // 伪代码：if(user.isNotLogin)
-//   ctx.page = '/b'
-//   console.log('修改跳转页面到: /b')
-//   next().then(() => {
-//     console.log('Middleware1 end')
-//   })
-// })
-
-// router.use((ctx, next) => {
-//   ctx.page = '/c'
-//   console.log('即将跳转到页面：/c')
-//   next().then(() => {
-//     console.log('Middleware2 end')
-//   })
-// })
-
-// router.run()
+mwSay('hello')

@@ -1,34 +1,31 @@
-// function co (gen) {
-//   return new Promise((resolve, reject) => {
+function co (gen) {
+  const i = gen()
+  i.next()
+  let res = i.next()
+  while (!res.done) {
+    res.value.then(data => {
+      res = i.next(data)
+    })
+  }
+  return res.value
+}
 
-//   })
-//   const res = gen.next()
-//   if(res.done)
-// }
+function * gen () {
+  let time
+  time = yield sleep(1000)
+  console.log('time', time)
+  time = yield sleep(3000)
+  console.log('time', time)
+  time = yield sleep(7000)
+  console.log('time', time)
+}
 
-// function run(gen) {
+function sleep (time) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(time)
+    }, time)
+  })
+}
 
-// }
-
-// function * gen () {
-//   console.log('gen start')
-//   const res1 = yield new Promise((resolve, reject) => {
-//     console.log('Promise1 start')
-//     setTimeout(() => {
-//       resolve(2)
-//       console.log('Promise1 end')
-//     }, 2000)
-//   })
-//   const res2 = yield new Promise((resolve, reject) => {
-//     console.log('Promise2 start')
-//     setTimeout(() => {
-//       resolve(5)
-//       console.log('Promise2 end')
-//     }, 2000)
-//   })
-//   console.log('gen end', res1 + res2)
-// }
-
-// co(gen).then(data => {
-//   console.log('co end', data)
-// })
+co(gen)
